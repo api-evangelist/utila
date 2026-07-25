@@ -1,0 +1,149 @@
+openapi: 3.0.0
+info:
+  title: Utila Address Book Vaults API
+  version: v2
+servers:
+- url: https://api.utila.io
+security:
+- bearerAuth: []
+tags:
+- name: Vaults
+paths:
+  /v2/vaults/{vault_id}:
+    get:
+      summary: GetVault
+      description: Retrieve a vault by resource name.
+      operationId: Vaults_GetVault
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2GetVaultResponse'
+      parameters:
+      - name: vault_id
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Vaults
+  /v2/vaults:
+    get:
+      summary: ListVaults
+      description: Retrieve a list of all vaults accessible to the authenticated user.
+      operationId: Vaults_ListVaults
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2ListVaultsResponse'
+      parameters:
+      - name: orderBy
+        description: 'SQL-like ordering specifications.
+
+          Supports the fields `display_name` and `create_time`.'
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageSize
+        description: The maximum number of items to return. The service may return fewer than this value.
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: pageToken
+        description: 'A page token, received from the previous list call as `nextPageToken`.
+
+          Provide this to retrieve the subsequent page.
+
+
+          When paginating, all other parameters must match the call that provided
+
+          the page token.'
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: skip
+        description: 'How many results to skip.
+
+
+          Note: may be used alongside token-based pagination (see `pageToken`),
+
+          although this won''t be needed for most use cases.'
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      tags:
+      - Vaults
+components:
+  schemas:
+    v2Vault:
+      type: object
+      properties:
+        name:
+          type: string
+          example: vaults/95257c5a522f
+          description: 'The resource name of the vault.
+
+
+            Format: `vaults/{vault_id}`'
+          readOnly: true
+        displayName:
+          type: string
+          example: Fund VI
+          description: 'A human-readable name.
+
+
+            Must match the regular expression `[a-zA-Z0-9\.,:\-''# _$]+$` and be shorter than 100 characters'
+        archived:
+          type: boolean
+          description: 'Whether this vault is archived.
+
+
+            Archived vaults are not returned by default in `ListVaults` and are not shown in the UI.'
+          readOnly: true
+        createTime:
+          type: string
+          format: date-time
+          description: Creation timestamp.
+          readOnly: true
+      required:
+      - displayName
+    v2ListVaultsResponse:
+      type: object
+      properties:
+        vaults:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2Vault'
+          description: The vaults returned.
+        nextPageToken:
+          type: string
+          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+        totalSize:
+          type: integer
+          format: int32
+          description: Total number of items in the response, regardless of pagination.
+    v2GetVaultResponse:
+      type: object
+      properties:
+        vault:
+          description: The vault.
+          allOf:
+          - $ref: '#/components/schemas/v2Vault'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

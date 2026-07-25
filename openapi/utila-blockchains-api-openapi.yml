@@ -1,0 +1,252 @@
+openapi: 3.0.0
+info:
+  title: Utila Address Book Blockchains API
+  version: v2
+servers:
+- url: https://api.utila.io
+security:
+- bearerAuth: []
+tags:
+- name: Blockchains
+paths:
+  /v2/networks/{network_id}:
+    get:
+      summary: GetNetwork
+      description: Retrieves a Network by resource name.
+      operationId: Blockchains_GetNetwork
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2GetNetworkResponse'
+      parameters:
+      - name: network_id
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Blockchains
+  /v2/networks:
+    get:
+      summary: ListNetworks
+      description: 'Returns the list of networks available for use.
+
+
+        To list custom EVM networks, use [ListVaultNetworks](#operation/Blockchains_ListVaultNetworks)'
+      operationId: Blockchains_ListNetworks
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2ListNetworksResponse'
+      parameters:
+      - name: pageSize
+        description: 'The maximum number of items to return. The service may return fewer than this value.
+
+
+          Note: pagination is currently not supported.'
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: pageToken
+        description: 'A page token, received from the previous list call as `nextPageToken`.
+
+
+          Note: pagination is currently not supported.'
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - Blockchains
+  /v2/vaults/{vault_id}/networks:
+    get:
+      summary: ListVaultNetworks
+      description: Returns the list of vault networks available for use.
+      operationId: Blockchains_ListVaultNetworks
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2ListVaultNetworksResponse'
+      parameters:
+      - name: vault_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        description: 'Note: pagination is currently not supported.'
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: pageToken
+        description: 'A page token, received from the previous list call as `nextPageToken`.
+
+
+          Note: pagination is currently not supported.'
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - Blockchains
+  /v2/networks/{network_id}/batchContracts/latest:
+    get:
+      summary: GetLatestBatchContract
+      description: Retrieves the latest BatchContract. Batch transfer of ERC20 tokens require a token approval for that contract.
+      operationId: Blockchains_GetLatestBatchContract
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2BatchContract'
+      parameters:
+      - name: network_id
+        in: path
+        required: true
+        schema:
+          type: string
+      tags:
+      - Blockchains
+components:
+  schemas:
+    NetworkCAIPDetails:
+      type: object
+      properties:
+        chainId:
+          type: string
+          example: eip155:1
+          description: 'The CAIP-2 compliant chain id.
+
+
+            Format: `{namespace}:{reference}`'
+        namespace:
+          type: string
+          example: eip155
+          description: 'The CAIP-2 compliant namespace.
+
+
+            See: https://github.com/ChainAgnostic/namespaces
+
+
+            Format: `[-a-z0-9]{3,8}`'
+        reference:
+          type: string
+          example: '1'
+          description: 'The CAIP-2 compliant reference.
+
+
+            Format: `[-_a-zA-Z0-9]{1,32}`'
+      description: Chain-Agnostic Identifiers (CAIP) details for this network.
+    v2GetNetworkResponse:
+      type: object
+      properties:
+        network:
+          description: The network.
+          allOf:
+          - $ref: '#/components/schemas/v2Network'
+    v2Network:
+      type: object
+      properties:
+        name:
+          type: string
+          example: networks/ethereum-mainnet
+          description: 'The resource name of the network.
+
+
+            Format: `networks/{network_id}`.'
+        displayName:
+          type: string
+          example: Ethereum Mainnet
+          description: A user-readable name for the network.
+        caipDetails:
+          description: 'Chain-Agnostic Identifiers (CAIP) details for this network.
+
+
+            See: https://github.com/ChainAgnostic/CAIPs'
+          allOf:
+          - $ref: '#/components/schemas/NetworkCAIPDetails'
+        testnet:
+          type: boolean
+          example: false
+          description: Whether this network is a testnet.
+        nativeAsset:
+          type: string
+          example: assets/e72ff35a5b15
+          description: 'The native asset of this network.
+
+
+            Format: `assets/{asset_id}`'
+        custom:
+          type: boolean
+          example: false
+          description: Whether this network is custom.
+        status:
+          $ref: '#/components/schemas/v2NetworkStatusEnum'
+    v2ListNetworksResponse:
+      type: object
+      properties:
+        networks:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2Network'
+          description: The list of networks.
+        nextPageToken:
+          type: string
+          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+      description: The response message for ListNetworks.
+    v2NetworkStatusEnum:
+      type: string
+      enum:
+      - ACTIVE
+      - DISABLED
+      - DEPRECATED
+    v2ListVaultNetworksResponse:
+      type: object
+      properties:
+        networks:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2Network'
+          description: The list of vault networks.
+        nextPageToken:
+          type: string
+          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+    v2BatchContract:
+      type: object
+      properties:
+        name:
+          type: string
+          example: networks/ethereum-mainnet/0x1234...
+          description: The resource name of the batch contract.
+        network:
+          type: string
+          example: networks/ethereum-mainnet
+          description: The network of the batch contract.
+        address:
+          type: string
+          example: 0x1234...
+          description: The address of the batch contract.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

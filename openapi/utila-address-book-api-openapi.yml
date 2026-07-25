@@ -1,0 +1,434 @@
+openapi: 3.0.0
+info:
+  title: Utila Address Book API
+  version: v2
+servers:
+- url: https://api.utila.io
+security:
+- bearerAuth: []
+tags:
+- name: Address Book
+paths:
+  /v2/vaults/{vault_id}/addressBookEntries:
+    get:
+      summary: ListAddressBookEntries
+      description: Retrieve a list of all address book entries in a vault.
+      operationId: AddressBook_ListAddressBookEntries
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2ListAddressBookEntriesResponse'
+      parameters:
+      - name: vault_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        description: 'The maximum number of address book entries to return.
+
+          The service may return fewer than this value.
+
+          If unspecified, at most 50 address book entries will be returned.
+
+          The maximum value is 1000; values above 1000 will be coerced to 1000.'
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: pageToken
+        description: 'A page token, received from a previous `ListAddressBookEntries` call.
+
+          Provide this to retrieve the subsequent page.
+
+
+          When paginating, all other parameters provided to `ListAddressBookEntries` must
+
+          match the call that provided the page token.'
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: filter
+        description: 'A filter expression that filters address book entries listed in the response.
+
+
+          Supported fields and functions:
+
+          | Name | Description | Example |
+
+          |------|-------------|---------|
+
+          | `network` | Filter by one or more networks (`string...`). | `network("networks/ethereum-mainnet")` |
+
+          | `address` | Filter by one or more addresses, case-insensitive (`string...`). | `address("0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6")` |
+
+          | `display_name` | Filter by one or more display names, exact match and case-sensitive, supports a maximum of 100 display names. (`string...`). | `display_name("Cold Storage", "My Wallet")` |
+
+          | `create_time` | Filter by creation time (`string` comparison). | `create_time > "2023-08-29T18:04:00Z"` |'
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: orderBy
+        description: "A comma-separated list of fields by which to order the results.\nValid fields are:\n  * `create_time`\n  * `display_name`\n  * `address`\n  * `network`\n\nThe default sorting order is ascending. To specify descending order for a field, a suffix ` desc` should be appended to the field name. For example: `create_time desc`.\n\nRedundant field names are collapsed. For example if one specifies `create_time desc, create_time`, the results will be sorted by `create_time desc` only.\n\nIf a field is not specified, the results will be sorted by the default sorting order."
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - Address Book
+  /v2/vaults/{vault_id}/addressBookEntries:batchGet:
+    get:
+      summary: BatchGetAddressBookEntries
+      description: Retrieve multiple address book entries by resource name.
+      operationId: AddressBook_BatchGetAddressBookEntries
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2BatchGetAddressBookEntriesResponse'
+      parameters:
+      - name: vault_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: names
+        description: 'The resource names of the address book entries to retrieve.
+
+
+          Format: `vaults/{vault_id}/addressBookEntries/{entry_id}`'
+        in: query
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      tags:
+      - Address Book
+  /v2/vaults/{vault_id}/addressBookEntries:batchCreate:
+    post:
+      summary: BatchCreateAddressBookEntries
+      description: Batch creates address book entries.
+      operationId: AddressBook_BatchCreateAddressBookEntries
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2BatchCreateAddressBookEntriesResponse'
+      parameters:
+      - name: vault_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressBookBatchCreateAddressBookEntriesBody'
+        required: true
+      tags:
+      - Address Book
+  /v2/vaults/{vault_id}/addressBookEntries:unsignedBatchCreate:
+    post:
+      summary: BatchCreateUnsignedAddressBookEntries
+      description: Batch creates address book entries without per-entry vault signatures (quorum approval only).
+      operationId: AddressBook_BatchCreateUnsignedAddressBookEntries
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2BatchCreateUnsignedAddressBookEntriesResponse'
+      parameters:
+      - name: vault_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressBookBatchCreateUnsignedAddressBookEntriesBody'
+        required: true
+      tags:
+      - Address Book
+  /v2/vaults/{vault_id}/addressBookEntries:batchAdd:
+    post:
+      summary: BatchAddAddressBookEntriesToGroup
+      description: 'Batch add existing address book entries to an address book entry group.
+
+        Initiates a quorum action.'
+      operationId: AddressBook_BatchAddAddressBookEntriesToGroup
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v2BatchAddAddressBookEntriesToGroupResponse'
+      parameters:
+      - name: vault_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressBookBatchAddAddressBookEntriesToGroupBody'
+        required: true
+      tags:
+      - Address Book
+components:
+  schemas:
+    AddressBookBatchCreateUnsignedAddressBookEntriesBody:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2CreateAddressBookEntryRequest'
+          description: The individual create requests for each address book entry.
+      required:
+      - requests
+    v2ListAddressBookEntriesResponse:
+      type: object
+      properties:
+        addressBookEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2AddressBookEntry'
+          description: The list of address book entries.
+          readOnly: true
+        nextPageToken:
+          type: string
+          example: next_page_token
+          description: 'A token, which can be sent as `page_token` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+          readOnly: true
+        totalSize:
+          type: integer
+          format: int32
+          example: 150
+          description: The total number of address book entries that match the request criteria.
+          readOnly: true
+    v2AddressBookEntry:
+      type: object
+      properties:
+        name:
+          type: string
+          example: vaults/1b25635a5b3f/addressBookEntries/95257c5a522f
+          description: 'The resource name of the address book entry.
+
+
+            Format: `vaults/{vault_id}/addressBookEntries/{entry_id}`'
+          readOnly: true
+        address:
+          type: string
+          example: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6'
+          description: The blockchain address.
+        displayName:
+          type: string
+          example: My DeFi Wallet
+          description: A human-readable name for the address.
+        network:
+          type: string
+          example: networks/ethereum-mainnet
+          description: 'The resource name of the network this address belongs to.
+
+
+            Format: `networks/{network_id}`'
+        note:
+          type: string
+          example: This is my main trading wallet
+          description: Optional note attached to the address.
+        createTime:
+          type: string
+          format: date-time
+          example: '2023-01-15T10:30:00Z'
+          description: Output only. Creation time.
+          readOnly: true
+        tracked:
+          type: boolean
+          description: If true, assets of this address should be tracked by Utila.
+        associatedExternalWallet:
+          type: string
+          example: vaults/1b25635a5b3f/wallets/95257c5a522f
+          description: 'The wallet that is associated with this address.
+
+            Only set if `tracked` is true.
+
+
+            Format: `vaults/{vault_id}/wallets/{wallet_id}`'
+          readOnly: true
+        creator:
+          type: string
+          example: users/1b25635a5b3f/users/95257c5a522f
+          description: 'Output only. The user who issued the address book entry creation.
+
+
+            Format: `users/{user_id}`'
+          readOnly: true
+        signed:
+          type: boolean
+          description: 'Output only.
+
+            Whether the address book entry is cryptographically signed after going through the quorum approval process.'
+          readOnly: true
+      description: An address book entry.
+      required:
+      - address
+      - displayName
+      - network
+    v2BatchAddAddressBookEntriesToGroupResponse:
+      type: object
+      properties:
+        vaultAction:
+          description: The vault action representing the quorum action.
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/v2VaultAction'
+    v2BatchGetAddressBookEntriesResponse:
+      type: object
+      properties:
+        addressBookEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2AddressBookEntry'
+          description: The requested address book entries.
+          readOnly: true
+    AddressBookBatchCreateAddressBookEntriesBody:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2CreateAddressBookEntryRequest'
+          description: The individual create requests for each address book entry.
+      required:
+      - requests
+    v2CreateAddressBookEntryRequest:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6'
+          description: The blockchain address.
+        displayName:
+          type: string
+          example: John's deposit address
+          description: A human-readable name for the address.
+        network:
+          type: string
+          example: networks/ethereum-mainnet
+          description: 'The resource name of the network this address belongs to.
+
+
+            Format: `networks/{network_id}`'
+        note:
+          type: string
+          example: 'This is John''s deposit address '
+          description: Optional note attached to the address.
+      description: Request message for creating a single address book entry.
+      required:
+      - address
+      - displayName
+      - network
+    v2BatchCreateUnsignedAddressBookEntriesResponse:
+      type: object
+      properties:
+        vaultAction:
+          description: The vault action representing the quorum action.
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/v2VaultAction'
+    v2BatchCreateAddressBookEntriesResponse:
+      type: object
+      properties:
+        vaultAction:
+          description: The vault action representing the quorum action.
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/v2VaultAction'
+    v2VaultActionStatusEnum:
+      type: string
+      enum:
+      - PENDING
+      - REJECTED
+      - AWAITING_SIGNATURE
+      - RUNNING
+      - FINISHED
+      - FAILED
+      - CANCELED
+      - EXPIRED
+    AddressBookBatchAddAddressBookEntriesToGroupBody:
+      type: object
+      properties:
+        addressBookEntryGroup:
+          type: string
+          example: vaults/1b25635a5b3f/addressBookEntryGroups/abc123
+          description: 'The resource name of the address book entry group that the entries should be
+
+            added to.
+
+
+            Format: `vaults/{vault_id}/addressBookEntryGroups/{group_id}`'
+        names:
+          type: array
+          example:
+          - vaults/1b25635a5b3f/addressBookEntries/95257c5a522f
+          items:
+            type: string
+          description: 'The resource names of the address book entries to add to the group.
+
+
+            Format: `vaults/{vault_id}/addressBookEntries/{entry_id}`'
+      required:
+      - addressBookEntryGroup
+      - names
+    v2VaultAction:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'The resource name of the vault action.
+
+
+            Format: `vaults/{vault_id}/actions/{action_id}`'
+          readOnly: true
+        status:
+          description: The current status of the vault action.
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/v2VaultActionStatusEnum'
+        createTime:
+          type: string
+          format: date-time
+          description: Creation timestamp.
+          readOnly: true
+        expireTime:
+          type: string
+          format: date-time
+          description: Expiration timestamp.
+          readOnly: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
