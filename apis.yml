@@ -1,27 +1,206 @@
 aid: utila
 name: Utila
-description: 'Utila is a company surfaced as a portfolio company of wing-venture-capital and added to
-  the API Evangelist network as a stub for enrichment. Sector: web3. This profile is a lead awaiting the
-  enrichment pipeline.'
+description: >-
+  Utila is an institutional digital asset wallet and stablecoin infrastructure
+  platform for fintechs and enterprises. Built on MPC (multi-party computation)
+  key management, it provides secure custody with policy-driven governance,
+  embedded compliance and AML screening, and a resource-oriented REST API for
+  programmatically managing vaults, MPC wallets, addresses, balances, and
+  transactions across many blockchains — including sponsored (gas-abstracted)
+  transfers, transaction simulation, an automated Co-Signer for signing
+  workflows, webhooks, and a first-party CLI.
 url: https://raw.githubusercontent.com/api-evangelist/utila/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - wing-venture-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/utila.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Web3
-apis: []
+- Digital Assets
+- Stablecoins
+- Custody
+- MPC Wallets
+- Blockchain
+- Payments
+- Treasury
+apis:
+- aid: utila:utila-address-book-api
+  name: Utila Address Book API
+  description: The Address Book API from Utila — 5 operation(s) for address book.
+  humanURL: https://docs.utila.io/reference/api-overview
+  baseURL: https://api.utila.io
+  tags:
+  - Address Book
+  properties:
+  - type: OpenAPI
+    url: openapi/utila-address-book-api-openapi.yml
+  - type: Documentation
+    url: https://docs.utila.io/
+- aid: utila:utila-assets-api
+  name: Utila Assets API
+  description: The Assets API from Utila — 3 operation(s) for assets.
+  humanURL: https://docs.utila.io/reference/api-overview
+  baseURL: https://api.utila.io
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/utila-assets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.utila.io/
+- aid: utila:utila-balances-api
+  name: Utila Balances API
+  description: The Balances API from Utila — 5 operation(s) for balances.
+  humanURL: https://docs.utila.io/reference/api-overview
+  baseURL: https://api.utila.io
+  tags:
+  - Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/utila-balances-api-openapi.yml
+  - type: Documentation
+    url: https://docs.utila.io/
+- aid: utila:utila-blockchains-api
+  name: Utila Blockchains API
+  description: The Blockchains API from Utila — 4 operation(s) for blockchains.
+  humanURL: https://docs.utila.io/reference/api-overview
+  baseURL: https://api.utila.io
+  tags:
+  - Blockchains
+  properties:
+  - type: OpenAPI
+    url: openapi/utila-blockchains-api-openapi.yml
+  - type: Documentation
+    url: https://docs.utila.io/
+- aid: utila:utila-transactions-api
+  name: Utila Transactions API
+  description: The Transactions API from Utila — 11 operation(s) for transactions.
+  humanURL: https://docs.utila.io/reference/api-overview
+  baseURL: https://api.utila.io
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/utila-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.utila.io/
+- aid: utila:utila-vaults-api
+  name: Utila Vaults API
+  description: The Vaults API from Utila — 2 operation(s) for vaults.
+  humanURL: https://docs.utila.io/reference/api-overview
+  baseURL: https://api.utila.io
+  tags:
+  - Vaults
+  properties:
+  - type: OpenAPI
+    url: openapi/utila-vaults-api-openapi.yml
+  - type: Documentation
+    url: https://docs.utila.io/
+- aid: utila:utila-wallets-api
+  name: Utila Wallets API
+  description: The Wallets API from Utila — 10 operation(s) for wallets.
+  humanURL: https://docs.utila.io/reference/api-overview
+  baseURL: https://api.utila.io
+  tags:
+  - Wallets
+  properties:
+  - type: OpenAPI
+    url: openapi/utila-wallets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.utila.io/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/utila/overview
 - type: Website
   url: https://utila.io/
+- type: DeveloperPortal
+  url: https://docs.utila.io/
+- type: Documentation
+  url: https://docs.utila.io/
+- type: APIReference
+  url: https://docs.utila.io/reference/api-overview
+- type: GettingStarted
+  url: https://docs.utila.io/reference/example-client
+- type: Blog
+  url: https://utila.io/blog
+- type: GitHubOrganization
+  url: https://github.com/utila-io
+- type: Pricing
+  url: https://utila.io/pricing
+- type: Login
+  url: https://console.utila.io/
+- type: TermsOfService
+  url: https://utila.io/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://utila.io/legal/privacy-policy
+- type: Contact
+  url: https://utila.io/contact
+- type: Support
+  url: https://support.utila.io/
+- type: StatusPage
+  url: https://status.utila.io/
+- type: TrustCenter
+  url: security/utila-trust-center.yml
+- type: Compliance
+  url: https://trust.utila.io/
+- type: DomainSecurity
+  url: security/utila-domain-security.yml
+- type: Authentication
+  url: authentication/utila-authentication.yml
+- type: ErrorCatalog
+  url: errors/utila-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/utila-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/utila-lifecycle.yml
+- type: ChangeLog
+  url: changelog/utila-changelog.yml
+- type: Conventions
+  url: conventions/utila-conventions.yml
+- type: Conformance
+  url: conformance/utila-conformance.yml
+- type: CLI
+  url: cli/utila-cli.yml
+- type: Webhooks
+  url: asyncapi/utila-webhooks.yml
+- type: MCPServer
+  url: mcp/utila-mcp.yml
+- type: LLMsTxt
+  url: llms/utila-llms.txt
+- type: WellKnown
+  url: well-known/utila-well-known.yml
+- type: Packages
+  url: packages/utila-packages.yml
+- type: SDKs
+  url: packages/utila-packages.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/utila-data-model.yml

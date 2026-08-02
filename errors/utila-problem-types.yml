@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.utila.io/reference/error-codes-1
+format: grpc-status
+description: Utila API errors follow gRPC status-code semantics (the API is
+  modeled on Google AIPs); the docs publish Utila-specific error codes on top
+  of the standard gRPC codes (https://grpc.io/docs/guides/status-codes/).
+  Additional error codes may be introduced in future API updates.
+problems:
+- code: 1001
+  name: AUTHENTICATION_TOKEN_EXPIRED
+  title: The access token used for authentication has expired.
+  remediation: Generate a fresh service-account JWT (max 1 hour lifetime).
+- code: 1002
+  name: AUTHENTICATION_TOKEN_MISSING_OR_INVALID
+  title: The Bearer token is invalid or missing.
+  remediation: Verify the Authorization Bearer token format, claims (sub/aud/exp),
+    and RS256 signature.
+- code: 10001
+  name: TRANSACTION_INSUFFICIENT_FUNDS
+  title: The transaction cannot be executed due to insufficient funds in the
+    source account.
+  remediation: Ensure adequate balance in the source wallet before initiating.
+- code: 10002
+  name: TRANSACTION_EXECUTION_REVERTED
+  title: The transaction failed to execute on the blockchain.
+  remediation: Review transaction parameters and retry.
+- code: 10003
+  name: TRANSACTION_SOURCE_ACCOUNT_NOT_ACTIVATED
+  title: The source account is not activated (particularly relevant for TRON
+    transactions).
+  remediation: Activate the source account before transacting.
+- code: 10004
+  name: TRANSACTION_ALREADY_SIGNED
+  title: The transaction was already signed.
+  remediation: Use ReplaceTransaction for signed-but-unmined transactions;
+    CancelTransaction only works before signing.

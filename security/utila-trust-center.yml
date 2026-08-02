@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+source: https://trust.utila.io/
+url: https://trust.utila.io/
+certifications:
+- SOC 2 Type II
+evidence:
+- source: https://trust.utila.io/
+  keywords:
+  - trust center
+  - compliance certification
+- source: https://utila.io/ (JSON-LD structured data)
+  quote: SOC 2 Type II compliance with continuous security audits
+notes: trust.utila.io is a JavaScript-rendered trust center portal (title
+  "Utila Trust Center"); certification detail beyond the SOC 2 Type II claim
+  published on utila.io was not extractable from static HTML.

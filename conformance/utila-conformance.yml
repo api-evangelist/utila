@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/utila-v2-openapi-original.json + https://docs.utila.io/
+standards:
+- id: google-aip
+  conforms: true
+  evidence: Resource-oriented design per Google AIPs - resource names
+    (vaults/{vault}/wallets/{wallet}), AIP-158 pagination (pageSize/pageToken),
+    AIP-159 '-' wildcard parents (cited in QueryWalletBalances docs), batch
+    Get/Create methods, filter/orderBy/view parameters.
+- id: grpc-status-codes
+  conforms: true
+  evidence: Error reference defers to standard gRPC status codes
+    (https://docs.utila.io/reference/error-codes-1) with Utila-specific
+    numeric codes on top.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme; authentication is self-signed
+    service-account JWT bearer (RS256).
+- id: oidc
+  conforms: false
+  evidence: No openIdConnect scheme; /.well-known/openid-configuration
+    returned 404 on all hosts.
+- id: jwt-rfc7519
+  conforms: true
+  evidence: Bearer tokens are RFC 7519 JWTs (bearerFormat JWT; sub/aud/exp
+    claims, RS256) per https://docs.utila.io/reference/authentication.
+- id: pagination
+  conforms: true
+  evidence: pageSize/pageToken on 7 list/query operations (AIP-158 page-token
+    style).
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header or idempotency contract documented.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No application/problem+json responses; only 200 responses are
+    declared in the OpenAPI, and errors follow gRPC status semantics.
+- id: rfc8594-sunset
+  conforms: false
+  evidence: No Sunset/Deprecation header support documented.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returned 404 on utila.io, api.utila.io,
+    and docs.utila.io.
+- id: aml-screening
+  conforms: true
+  evidence: Transaction AML screening surfaced via
+    Transactions_GetTransactionAMLScreening and the
+    TRANSACTION_AML_SCREENING_RESULT_READY webhook event.

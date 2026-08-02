@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: generated
+skills:
+- file: utila-initiate-and-monitor-transfer.md
+  name: Initiate and monitor a transfer with Utila
+  api: openapi/utila-v2-openapi-original.json
+  operations: [Balances_QueryWalletBalances, Transactions_EstimateTransactionFee,
+    Transactions_InitiateTransaction, Transactions_GetTransaction,
+    Transactions_CancelTransaction, Transactions_ReplaceTransaction]
+- file: utila-provision-wallet.md
+  name: Provision a wallet and deposit address with Utila
+  api: openapi/utila-v2-openapi-original.json
+  operations: [Vaults_ListVaults, Wallets_CreateWallet, Blockchains_ListNetworks,
+    Wallets_CreateWalletAddress, Balances_QueryWalletBalances]
+- file: utila-sweep-to-treasury.md
+  name: Sweep token balances to treasury with Utila
+  api: openapi/utila-v2-openapi-original.json
+  operations: [Balances_QueryBalances, Balances_QueryWalletBalances,
+    Transactions_EstimateTransactionFee, Transactions_InitiateTransaction,
+    Transactions_GetTransaction]

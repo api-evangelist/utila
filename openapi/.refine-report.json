@@ -1,0 +1,26 @@
+{
+  "provider": "utila",
+  "sources": [
+    "utila-address-book-api-openapi.yml",
+    "utila-assets-api-openapi.yml",
+    "utila-balances-api-openapi.yml",
+    "utila-blockchains-api-openapi.yml",
+    "utila-transactions-api-openapi.yml",
+    "utila-vaults-api-openapi.yml",
+    "utila-wallets-api-openapi.yml"
+  ],
+  "outputs": [
+    "utila-address-book-api-openapi.yml",
+    "utila-assets-api-openapi.yml",
+    "utila-balances-api-openapi.yml",
+    "utila-blockchains-api-openapi.yml",
+    "utila-transactions-api-openapi.yml",
+    "utila-vaults-api-openapi.yml",
+    "utila-wallets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

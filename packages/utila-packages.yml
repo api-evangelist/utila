@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/utila-io + registry.npmjs.org + pypi.org
+packages:
+- language: javascript
+  registry: github
+  name: '@utila/api'
+  url: https://github.com/utila-io/js-sdk
+  install: npm install @utila/api
+  official: true
+  notes: First-party JavaScript SDK in the utila-io GitHub org ("tools to easily
+    integrate Utila's API services"; promise-based methods for transactions,
+    assets, balances, blockchains, vaults and wallets). The README documents
+    npm install @utila/api, but the package returned 404 on registry.npmjs.org
+    at capture time - install from the GitHub repository.
+- language: binary
+  registry: vendor
+  name: utila-cli
+  url: https://console.utila.io/resource-center
+  install: Download from the Utila Console Resource Center (login required)
+  official: true
+  notes: First-party CLI and Co-Signer binary; command surface captured in
+    cli/utila-cli.yml.
+- language: javascript
+  registry: npm
+  name: '@solana/keychain-utila'
+  url: https://www.npmjs.com/package/@solana/keychain-utila
+  install: npm install @solana/keychain-utila
+  official: false
+  notes: Utila wallet signer backend for Solana transactions, published by the
+    Solana Foundation (third-party integration, not Utila first-party).
+- language: javascript
+  registry: npm
+  name: '@luxfi/utila'
+  url: https://www.npmjs.com/package/@luxfi/utila
+  install: npm install @luxfi/utila
+  official: false
+  notes: Community SDK wrapping Utila's API services (published by Lux).
+probed:
+- registry: npm
+  query: '@utila/api'
+  status: 404
+- registry: pypi
+  query: utila
+  status: 200 but unrelated project (github.com/AaIiMm/Utila utility, not the company)

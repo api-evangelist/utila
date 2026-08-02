@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.utila.io/reference/webhooks
+type: Webhooks
+description: Utila publishes no AsyncAPI document, but documents a webhook event
+  surface configured per vault in the Console (Vault Settings -> Webhooks).
+  Events are delivered as JSON POSTs with an RSA signature header.
+events:
+- type: TRANSACTION_CREATED
+  resourceType: TRANSACTION
+- type: TRANSACTION_STATE_UPDATED
+  resourceType: TRANSACTION
+  details: details.transactionStateUpdated.newState (e.g. CONFIRMED)
+- type: WALLET_CREATED
+  resourceType: WALLET
+- type: WALLET_ADDRESS_CREATED
+  resourceType: WALLET_ADDRESS
+- type: TRANSACTION_AML_SCREENING_RESULT_READY
+  resourceType: TRANSACTION
+  details: details.transactionAmlScreeningResultReady.action (e.g. ALLOW)
+payload:
+  fields: [id, vault, type, resourceType, resource, details]
+  example_resource: vaults/3bf247bc8ee2c/transactions/b6e3cd32e827
+security:
+  signature_header: x-utila-signature
+  signature_scheme: RSA-4096 with SHA-512 hash and PSS padding, base64-encoded;
+    verify with the public key from the Utila Console
+  transport: HTTPS endpoints required
+delivery:
+  acknowledgement: Endpoint must respond HTTP 200 OK
+  retry_policy: Exponential back-off for up to 24 hours, then events are discarded
+related:
+  cosigner_webhook: 'Separate co-signer approval webhook (docs.utila.io/reference/utila-cosigner)
+    receives the transaction object and responds with a signTransaction boolean.'

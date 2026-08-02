@@ -1,0 +1,265 @@
+{
+  "info": {
+    "_postman_id": "09f61128-5b12-4305-b1f0-4cabc9af5d5a",
+    "name": "Utila Address Book Vaults API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:28.000Z",
+    "updatedAt": "2026-07-28T03:26:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-09f61128-5b12-4305-b1f0-4cabc9af5d5a"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "vaults",
+          "item": [
+            {
+              "name": "{vault_id}",
+              "item": [
+                {
+                  "name": "GetVault",
+                  "id": "a907d58e-f078-4c98-8f92-ac45c016f9c5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/vaults/:vault_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "vaults",
+                        ":vault_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2c3b06ea-6a01-4aa0-b5f2-3129206afad9",
+                          "key": "vault_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a vault by resource name."
+                  },
+                  "response": [
+                    {
+                      "id": "a0aec53a-1f6e-4b20-9a3c-a80e44010bbb",
+                      "name": "A successful response.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "vault_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"vault\": {\n    \"displayName\": \"<string>\",\n    \"name\": \"<string>\",\n    \"archived\": \"<boolean>\",\n    \"createTime\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:26:29.000Z",
+                      "updatedAt": "2026-07-28T03:26:29.000Z",
+                      "uid": "35240-a0aec53a-1f6e-4b20-9a3c-a80e44010bbb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:26:29.000Z",
+                  "updatedAt": "2026-07-28T03:26:29.000Z",
+                  "uid": "35240-a907d58e-f078-4c98-8f92-ac45c016f9c5"
+                }
+              ],
+              "id": "be93cfe2-1f67-431f-a1ba-5f2a653c6ba6",
+              "createdAt": "2026-07-28T03:26:29.000Z",
+              "updatedAt": "2026-07-28T03:26:29.000Z",
+              "uid": "35240-be93cfe2-1f67-431f-a1ba-5f2a653c6ba6"
+            },
+            {
+              "name": "ListVaults",
+              "id": "9995f90f-981f-4b97-ba7c-463c7eebd60e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/vaults?orderBy=<string>&pageSize=<integer>&pageToken=<string>&skip=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "vaults"
+                  ],
+                  "query": [
+                    {
+                      "description": "SQL-like ordering specifications.\nSupports the fields `display_name` and `create_time`.",
+                      "key": "orderBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of items to return. The service may return fewer than this value.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "A page token, received from the previous list call as `nextPageToken`.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters must match the call that provided\nthe page token.",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases.",
+                      "key": "skip",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of all vaults accessible to the authenticated user."
+              },
+              "response": [
+                {
+                  "id": "f71f4285-0c2d-47e4-a26b-b6ee8a5e5a62",
+                  "name": "A successful response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/vaults?orderBy=<string>&pageSize=<integer>&pageToken=<string>&skip=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "vaults"
+                      ],
+                      "query": [
+                        {
+                          "description": "SQL-like ordering specifications.\nSupports the fields `display_name` and `create_time`.",
+                          "key": "orderBy",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of items to return. The service may return fewer than this value.",
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "A page token, received from the previous list call as `nextPageToken`.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters must match the call that provided\nthe page token.",
+                          "key": "pageToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases.",
+                          "key": "skip",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"vaults\": [\n    {\n      \"displayName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"archived\": \"<boolean>\",\n      \"createTime\": \"<dateTime>\"\n    },\n    {\n      \"displayName\": \"<string>\",\n      \"name\": \"<string>\",\n      \"archived\": \"<boolean>\",\n      \"createTime\": \"<dateTime>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"totalSize\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:26:29.000Z",
+                  "updatedAt": "2026-07-28T03:26:29.000Z",
+                  "uid": "35240-f71f4285-0c2d-47e4-a26b-b6ee8a5e5a62"
+                }
+              ],
+              "createdAt": "2026-07-28T03:26:29.000Z",
+              "updatedAt": "2026-07-28T03:26:29.000Z",
+              "uid": "35240-9995f90f-981f-4b97-ba7c-463c7eebd60e"
+            }
+          ],
+          "id": "536bc7c3-4bf8-4c26-a164-07530078ca64",
+          "createdAt": "2026-07-28T03:26:29.000Z",
+          "updatedAt": "2026-07-28T03:26:29.000Z",
+          "uid": "35240-536bc7c3-4bf8-4c26-a164-07530078ca64"
+        }
+      ],
+      "id": "cdd1b482-456f-4a15-9c63-d3fb635e1b1c",
+      "createdAt": "2026-07-28T03:26:29.000Z",
+      "updatedAt": "2026-07-28T03:26:29.000Z",
+      "uid": "35240-cdd1b482-456f-4a15-9c63-d3fb635e1b1c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.utila.io"
+    }
+  ]
+}

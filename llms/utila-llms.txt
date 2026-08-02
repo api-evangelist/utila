@@ -1,0 +1,75 @@
+# Utila Documentation
+
+> Utila institutional wallet for businesses, provides robust API for companies to manage their crypto transactions securely.
+
+## API Reference
+- [Welcome to Utila ](https://docs.utila.io/reference/api-overview.md)
+- [Authentication](https://docs.utila.io/reference/authentication.md)
+- [Supported Blockchains](https://docs.utila.io/reference/supported-blockchains.md)
+- [Example Client](https://docs.utila.io/reference/example-client.md)
+- [Using AI With Utila Docs](https://docs.utila.io/reference/using-ai-to-integrate-to-utila-docs.md): Fetch the complete documentation index at: https://docs.utila.io/llms.txt Use this file to discover all available pages before exploring further.
+- [Asset Types](https://docs.utila.io/reference/utila-types.md)
+- [Error Codes](https://docs.utila.io/reference/error-codes-1.md)
+- [Filters for List and Query Methods](https://docs.utila.io/reference/filtering.md)
+- [Initiate Transaction](https://docs.utila.io/reference/create-transfer.md)
+- [Asset Transfer](https://docs.utila.io/reference/asset-transfer.md)
+- [Sponsored Transfers](https://docs.utila.io/reference/sponsored-transfer.md): Offload transaction fees to any Utila wallet
+- [Solana Sponsored Transaction](https://docs.utila.io/reference/solana-sponsored-transfer.md)
+- [Stellar sponsored account and trustline](https://docs.utila.io/reference/stellar-sponsored-account-and-trustline.md)
+- [How to sweep token balances to treasury ](https://docs.utila.io/reference/how-to-sweep-token-balances-to-treasury.md): Sweeping consolidates a specific asset from many source wallets into a single destination wallet - a common pattern for treasury management, gas cost reduction, and omnibus architecture maintenance. This page walks through the full API sequence: querying balances across the vault, filtering eligible wallets, and initiating sponsored transfers in bulk.
+- [Webhooks](https://docs.utila.io/reference/webhooks.md)
+- [API Service Accounts](https://docs.utila.io/reference/service-accounts.md)
+- [Creating a Service Account](https://docs.utila.io/reference/set-up-a-service-account.md)
+- [Utila CLI](https://docs.utila.io/reference/utila-cli.md)
+- [Utila Co-Signer](https://docs.utila.io/reference/utila-cosigner.md)
+- [Authentication](https://docs.utila.io/reference/cli-authentication.md)
+- [Authentication (v1.4.0 or lower)](https://docs.utila.io/reference/cli-authentication-v140-or-lower.md)
+- [Configuration](https://docs.utila.io/reference/cli-configuration.md)
+- [State](https://docs.utila.io/reference/cli-state.md)
+- [State Migration Guide for CLI v1.5.0 and Earlier](https://docs.utila.io/reference/cli-state-migration-guide-v150-and-earlier.md): Complete guide for migrating your CLI state from version 1.5.0 or earlier to take advantage of enhanced encryption options and flexible cloud storage with managed KMS keys.
+- [Device and Key Shares Setup Guide](https://docs.utila.io/reference/cli-device-and-key-shares-setup-guide.md)
+- [Co-Signer Setup Guide](https://docs.utila.io/reference/cosigner-setup-guide.md)
+- [Downloads](https://docs.utila.io/reference/cli-downloads.md)
+- [Dockerfile](https://docs.utila.io/reference/cli-dockerfile.md)
+- [GetVault](https://docs.utila.io/reference/vaults_getvault.md): Retrieve a vault by resource name.
+- [ListVaults](https://docs.utila.io/reference/vaults_listvaults.md): Retrieve a list of all vaults accessible to the authenticated user.
+- [GetTransaction](https://docs.utila.io/reference/transactions_gettransaction.md): Retrieves a transaction by resource name.
+- [BatchGetTransactions](https://docs.utila.io/reference/transactions_batchgettransactions.md): Retrieves multiple transactions by resource name.
+- [ListTransactions](https://docs.utila.io/reference/transactions_listtransactions.md): Retrieve a list of all transactions in a vault.
+- [InitiateTransaction](https://docs.utila.io/reference/transactions_initiatetransaction.md): Initiate a new transaction.
+- [VoteOnTransactionRequest](https://docs.utila.io/reference/transactions_voteontransactionrequest.md): Vote on a transaction request.
+- [EstimateTransactionFee](https://docs.utila.io/reference/transactions_estimatetransactionfee.md): Estimate the fee for a transaction.
+- [GetLatestTransactionSimulation](https://docs.utila.io/reference/transactions_getlatesttransactionsimulation.md)
+- [CancelTransaction](https://docs.utila.io/reference/transactions_canceltransaction.md): Cancels a transaction. Used to cancel a transaction before it is signed.  Only the transaction's initiator or an admin can cancel a transaction.  If the transaction has already been signed, use [ReplaceTransaction](#tag/Transactions/operation/Transactions_ReplaceTransaction) instead.
+- [ReplaceTransaction](https://docs.utila.io/reference/transactions_replacetransaction.md): Creates a new transaction that replaces an existing signed transaction in the system which has not been mined yet.  Only works for blockchains that support replacement of signed transactions, e.g. - Ethereum - which has nonce management. - BTC - which has RBF (Replace-By-Fee) and CPFP (Child-Pays-For-Parent) mechanisms.  Some blockchains do not support transaction replacement, e.g. TRON - which is based on transaction expiration time - for these cases, the transaction will be either mined or expired after the configured expiration time.  If the transaction has not been signed yet, and you wish to cancel it, use [CancelTransaction](#tag/Transactions/operation/Transactions_CancelTransaction) instead.
+- [PublishTransaction](https://docs.utila.io/reference/transactions_publishtransaction.md): Manually publishes a signed transaction to the blockchain. This endpoint synchronously broadcasts the transaction to the network and returns the updated transaction details. The transaction must be fully signed before publishing.  **Note:** Currently only available for EVM-compatible blockchains. Support for additional blockchains will be added in future releases.
+- [GetTransactionAMLScreening](https://docs.utila.io/reference/transactions_gettransactionamlscreening.md): If the transaction was screened for AML, this endpoint will return the results. Relevant where screening is configured.
+- [ListAddressBookEntries](https://docs.utila.io/reference/addressbook_listaddressbookentries.md): Retrieve a list of all address book entries in a vault.
+- [BatchGetAddressBookEntries](https://docs.utila.io/reference/addressbook_batchgetaddressbookentries.md): Retrieve multiple address book entries by resource name.
+- [BatchCreateAddressBookEntries](https://docs.utila.io/reference/addressbook_batchcreateaddressbookentries.md): Batch creates address book entries.
+- [BatchAddAddressBookEntriesToGroup](https://docs.utila.io/reference/addressbook_batchaddaddressbookentriestogroup.md): Batch add existing address book entries to an address book entry group. Initiates a quorum action.
+- [BatchCreateUnsignedAddressBookEntries](https://docs.utila.io/reference/addressbook_batchcreateunsignedaddressbookentries.md): Batch creates address book entries without per-entry vault signatures (quorum approval only).
+- [ListWallets](https://docs.utila.io/reference/wallets_listwallets.md): Retrieve a list of all wallets in a vault.
+- [CreateWallet](https://docs.utila.io/reference/wallets_createwallet.md): Create a new wallet.
+- [GetWallet](https://docs.utila.io/reference/wallets_getwallet.md): Retrieve a wallet by resource name.
+- [BatchGetWallets](https://docs.utila.io/reference/wallets_batchgetwallets.md): Retrieve multiple wallets by resource name.
+- [ArchiveWallet](https://docs.utila.io/reference/wallets_archivewallet.md): Archive a wallet.
+- [BatchArchiveWallets](https://docs.utila.io/reference/wallets_batcharchivewallets.md): Archive multiple wallets.
+- [UnarchiveWallet](https://docs.utila.io/reference/wallets_unarchivewallet.md): Unarchive a wallet.
+- [BatchUnarchiveWallets](https://docs.utila.io/reference/wallets_batchunarchivewallets.md): Unarchive multiple wallets.
+- [ListWalletAddresses](https://docs.utila.io/reference/wallets_listwalletaddresses.md): Retrieve a list of all wallet addresses of a specific wallet.
+- [CreateWalletAddress](https://docs.utila.io/reference/wallets_createwalletaddress.md): Generates a new address in a wallet for the specificied blockchain network.  The address is derived from the appropriate MPC key that is used by that blockchain, i.e. ECDSA for Bitcoin and Ethereum, and EdDSA for Solana. The MPC key will be selected automatically for you. If a key is not available, an error will be returned.  Currently, creation of multiple addresses is supported only for UTXO-based blockchains.  Addresses in the EVM protocol family (Ethereum, Binance Smart Chain, etc.) generated in the same wallet will share the same address. This abstraction is useful for DeFi applications, where identical addresses are used across multiple blockchains.
+- [GetWalletAddress](https://docs.utila.io/reference/wallets_getwalletaddress.md): Retrieve a wallet address by resource name.
+- [BatchGetWalletAddresses](https://docs.utila.io/reference/wallets_batchgetwalletaddresses.md): Retrieve multiple wallet addresses by resource name.
+- [QueryBalances](https://docs.utila.io/reference/balances_querybalances.md): Retrieve a list of all asset balances in all wallets in a vault.
+- [QueryWalletBalances](https://docs.utila.io/reference/balances_querywalletbalances.md): Retrieve a list of all asset balances in a wallet. Can be used also to retrieve assets across all wallets as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of wallet ID in the parent.
+- [QueryWalletAddressBalances](https://docs.utila.io/reference/balances_querywalletaddressbalances.md): Retrieve a list of all asset balances in a wallet address. Can be used also to retrieve assets across all wallet adresses of a wallet as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of wallet address ID in the parent.
+- [RefreshAssetAddressBalance](https://docs.utila.io/reference/balances_refreshassetaddressbalance.md): Refreshes address balance for given address.
+- [QueryWalletUTXOs](https://docs.utila.io/reference/balances_querywalletutxos.md): Retrieve a list of all UTXOs in a wallet.
+- [GetNetwork](https://docs.utila.io/reference/blockchains_getnetwork.md): Retrieves a Network by resource name.
+- [ListNetworks](https://docs.utila.io/reference/blockchains_listnetworks.md): Returns the list of networks available for use.  To list custom EVM networks, use [ListVaultNetworks](#operation/Blockchains_ListVaultNetworks)
+- [ListVaultNetworks](https://docs.utila.io/reference/blockchains_listvaultnetworks.md): Returns the list of vault networks available for use.
+- [GetLatestBatchContract](https://docs.utila.io/reference/blockchains_getlatestbatchcontract.md): Retrieves the latest BatchContract. Batch transfer of ERC20 tokens require a token approval for that contract.
+- [GetAsset](https://docs.utila.io/reference/assets_getasset.md): Retrieves an asset by resource name.
+- [BatchGetAssets](https://docs.utila.io/reference/assets_batchgetassets.md): Retrieves a list of assets by resource name.
+- [GetVaultAsset](https://docs.utila.io/reference/assets_getvaultasset.md): Retrieves a vault scoped asset (imported token or custom chain token) by resource name.

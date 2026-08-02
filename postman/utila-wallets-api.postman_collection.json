@@ -1,0 +1,1690 @@
+{
+  "info": {
+    "_postman_id": "4978d60c-de74-432a-9674-6bbe05ce7e0b",
+    "name": "Utila Address Book Wallets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:33.000Z",
+    "updatedAt": "2026-07-28T03:26:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4978d60c-de74-432a-9674-6bbe05ce7e0b"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "vaults",
+          "item": [
+            {
+              "name": "{vault_id}",
+              "item": [
+                {
+                  "name": "wallets",
+                  "item": [
+                    {
+                      "name": "{wallet_id}",
+                      "item": [
+                        {
+                          "name": "addresses",
+                          "item": [
+                            {
+                              "name": "{address_id}",
+                              "item": [
+                                {
+                                  "name": "GetWalletAddress",
+                                  "id": "8f5fdb9c-fe5b-4f2c-bcf0-f69fc3454bab",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id/addresses/:address_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "vaults",
+                                        ":vault_id",
+                                        "wallets",
+                                        ":wallet_id",
+                                        "addresses",
+                                        ":address_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "29dd816c-f030-4592-9259-f09627b40ae2",
+                                          "key": "vault_id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "8f4f3e99-3e62-4a81-ab9e-38cf75caf003",
+                                          "key": "wallet_id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "ad6ad06a-d981-4adb-aeb0-801aa31015ec",
+                                          "key": "address_id",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Retrieve a wallet address by resource name."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "922182af-cc63-4fb4-a807-bf38f85a9e9e",
+                                      "name": "A successful response.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id/addresses/:address_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v2",
+                                            "vaults",
+                                            ":vault_id",
+                                            "wallets",
+                                            ":wallet_id",
+                                            "addresses",
+                                            ":address_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "vault_id"
+                                            },
+                                            {
+                                              "key": "wallet_id"
+                                            },
+                                            {
+                                              "key": "address_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"walletAddress\": {\n    \"network\": \"<string>\",\n    \"name\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"address\": \"<string>\",\n    \"format\": \"TON_NON_BOUNCEABLE\",\n    \"key\": \"<string>\",\n    \"keyDerivationPath\": [\n      \"<int64>\",\n      \"<int64>\"\n    ],\n    \"type\": \"MAIN\",\n    \"note\": \"<string>\"\n  }\n}",
+                                      "createdAt": "2026-07-28T03:26:34.000Z",
+                                      "updatedAt": "2026-07-28T03:26:34.000Z",
+                                      "uid": "35240-922182af-cc63-4fb4-a807-bf38f85a9e9e"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T03:26:34.000Z",
+                                  "updatedAt": "2026-07-28T03:26:34.000Z",
+                                  "uid": "35240-8f5fdb9c-fe5b-4f2c-bcf0-f69fc3454bab"
+                                }
+                              ],
+                              "id": "b1b9d496-3110-4665-a7fb-578630c7980a",
+                              "createdAt": "2026-07-28T03:26:34.000Z",
+                              "updatedAt": "2026-07-28T03:26:34.000Z",
+                              "uid": "35240-b1b9d496-3110-4665-a7fb-578630c7980a"
+                            },
+                            {
+                              "name": "ListWalletAddresses",
+                              "id": "779908d8-113d-4f1e-b1b4-5295fca73021",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id/addresses?pageSize=<integer>&pageToken=<string>&skip=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "vaults",
+                                    ":vault_id",
+                                    "wallets",
+                                    ":wallet_id",
+                                    "addresses"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "The maximum number of items to return. The service may return fewer than this value.\n\nIf unspecified, at most 50 will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                      "key": "pageSize",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "A page token, received from the previous list call as `nextPageToken`.",
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases.",
+                                      "key": "skip",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "d9342cb5-6ac9-4eb3-9b37-0fd8fb470843",
+                                      "key": "vault_id",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "1ccae751-cda8-4bc5-8593-a00bd3a8f5cb",
+                                      "key": "wallet_id",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve a list of all wallet addresses of a specific wallet."
+                              },
+                              "response": [
+                                {
+                                  "id": "6aa7034b-8171-4c88-8a31-7651928fcdfb",
+                                  "name": "A successful response.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id/addresses?pageSize=<integer>&pageToken=<string>&skip=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "vaults",
+                                        ":vault_id",
+                                        "wallets",
+                                        ":wallet_id",
+                                        "addresses"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "The maximum number of items to return. The service may return fewer than this value.\n\nIf unspecified, at most 50 will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                          "key": "pageSize",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "A page token, received from the previous list call as `nextPageToken`.",
+                                          "key": "pageToken",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases.",
+                                          "key": "skip",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "vault_id"
+                                        },
+                                        {
+                                          "key": "wallet_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"walletAddresses\": [\n    {\n      \"network\": \"<string>\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"format\": \"BITCOIN_P2TR\",\n      \"key\": \"<string>\",\n      \"keyDerivationPath\": [\n        \"<int64>\",\n        \"<int64>\"\n      ],\n      \"type\": \"MAIN\",\n      \"note\": \"<string>\"\n    },\n    {\n      \"network\": \"<string>\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"format\": \"BITCOIN_P2PKH\",\n      \"key\": \"<string>\",\n      \"keyDerivationPath\": [\n        \"<int64>\",\n        \"<int64>\"\n      ],\n      \"type\": \"DEPOSIT\",\n      \"note\": \"<string>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"totalSize\": \"<integer>\"\n}",
+                                  "createdAt": "2026-07-28T03:26:34.000Z",
+                                  "updatedAt": "2026-07-28T03:26:34.000Z",
+                                  "uid": "35240-6aa7034b-8171-4c88-8a31-7651928fcdfb"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:26:34.000Z",
+                              "updatedAt": "2026-07-28T03:26:34.000Z",
+                              "uid": "35240-779908d8-113d-4f1e-b1b4-5295fca73021"
+                            },
+                            {
+                              "name": "CreateWalletAddress",
+                              "id": "86458d41-ea39-43b5-9ada-f4da24aa3e15",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"network\": \"<string>\",\n  \"name\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"format\": \"SUBSTRATE_58\",\n  \"key\": \"<string>\",\n  \"keyDerivationPath\": [\n    \"<int64>\",\n    \"<int64>\"\n  ],\n  \"type\": \"DEPOSIT\",\n  \"note\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id/addresses",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "vaults",
+                                    ":vault_id",
+                                    "wallets",
+                                    ":wallet_id",
+                                    "addresses"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "193e1437-1b2f-4db5-9b5d-736a392db1b7",
+                                      "key": "vault_id",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "27fb2283-ba55-41ba-81b0-251bd1322f7f",
+                                      "key": "wallet_id",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Generates a new address in a wallet for the specificied blockchain network.\n\nThe address is derived from the appropriate MPC key that is used by that blockchain,\ni.e. ECDSA for Bitcoin and Ethereum, and EdDSA for Solana.\nThe MPC key will be selected automatically for you. If a key is not available,\nan error will be returned.\n\nCurrently, creation of multiple addresses is supported only for UTXO-based blockchains.\n\nAddresses in the EVM protocol family (Ethereum, Binance Smart Chain, etc.) generated in\nthe same wallet will share the same address. This abstraction is useful for DeFi applications,\nwhere identical addresses are used across multiple blockchains."
+                              },
+                              "response": [
+                                {
+                                  "id": "c2562b69-6daf-4322-9a70-3de9e017eb8c",
+                                  "name": "A successful response.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"network\": \"<string>\",\n  \"name\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"format\": \"SUBSTRATE_58\",\n  \"key\": \"<string>\",\n  \"keyDerivationPath\": [\n    \"<int64>\",\n    \"<int64>\"\n  ],\n  \"type\": \"DEPOSIT\",\n  \"note\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id/addresses",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "vaults",
+                                        ":vault_id",
+                                        "wallets",
+                                        ":wallet_id",
+                                        "addresses"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "vault_id"
+                                        },
+                                        {
+                                          "key": "wallet_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"walletAddress\": {\n    \"network\": \"<string>\",\n    \"name\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"address\": \"<string>\",\n    \"format\": \"TON_NON_BOUNCEABLE\",\n    \"key\": \"<string>\",\n    \"keyDerivationPath\": [\n      \"<int64>\",\n      \"<int64>\"\n    ],\n    \"type\": \"MAIN\",\n    \"note\": \"<string>\"\n  }\n}",
+                                  "createdAt": "2026-07-28T03:26:34.000Z",
+                                  "updatedAt": "2026-07-28T03:26:34.000Z",
+                                  "uid": "35240-c2562b69-6daf-4322-9a70-3de9e017eb8c"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:26:34.000Z",
+                              "updatedAt": "2026-07-28T03:26:34.000Z",
+                              "uid": "35240-86458d41-ea39-43b5-9ada-f4da24aa3e15"
+                            }
+                          ],
+                          "id": "9a6d4a6f-a798-4fc6-be5d-abeab6ee86b1",
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-9a6d4a6f-a798-4fc6-be5d-abeab6ee86b1"
+                        },
+                        {
+                          "name": "addresses:batchGet",
+                          "item": [
+                            {
+                              "name": "BatchGetWalletAddresses",
+                              "id": "16bda936-a2cb-4e79-9111-aefaf75bfa4b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id/addresses:batchGet?names=<string>&names=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "vaults",
+                                    ":vault_id",
+                                    "wallets",
+                                    ":wallet_id",
+                                    "addresses:batchGet"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The resource names of the wallet addresses to retrieve.\n\nFormat: `vaults/{vault_id}/wallets/{wallet_id}/addresses/{address_id}`",
+                                      "key": "names",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "(Required) The resource names of the wallet addresses to retrieve.\n\nFormat: `vaults/{vault_id}/wallets/{wallet_id}/addresses/{address_id}`",
+                                      "key": "names",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "e4d2d8ac-961d-4ce5-b24a-94de2e8b8a52",
+                                      "key": "vault_id",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "b7b009c9-929c-4806-8549-4e18b6825043",
+                                      "key": "wallet_id",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve multiple wallet addresses by resource name."
+                              },
+                              "response": [
+                                {
+                                  "id": "8668b47d-4387-40f3-8899-0b6f219fa5f3",
+                                  "name": "A successful response.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id/addresses:batchGet?names=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v2",
+                                        "vaults",
+                                        ":vault_id",
+                                        "wallets",
+                                        ":wallet_id",
+                                        "addresses:batchGet"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The resource names of the wallet addresses to retrieve.\n\nFormat: `vaults/{vault_id}/wallets/{wallet_id}/addresses/{address_id}`",
+                                          "key": "names",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "vault_id"
+                                        },
+                                        {
+                                          "key": "wallet_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"walletAddresses\": [\n    {\n      \"network\": \"<string>\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"format\": \"SUBSTRATE_58\",\n      \"key\": \"<string>\",\n      \"keyDerivationPath\": [\n        \"<int64>\",\n        \"<int64>\"\n      ],\n      \"type\": \"DEPOSIT\",\n      \"note\": \"<string>\"\n    },\n    {\n      \"network\": \"<string>\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"address\": \"<string>\",\n      \"format\": \"TON_NON_BOUNCEABLE\",\n      \"key\": \"<string>\",\n      \"keyDerivationPath\": [\n        \"<int64>\",\n        \"<int64>\"\n      ],\n      \"type\": \"DEPOSIT\",\n      \"note\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:26:34.000Z",
+                                  "updatedAt": "2026-07-28T03:26:34.000Z",
+                                  "uid": "35240-8668b47d-4387-40f3-8899-0b6f219fa5f3"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:26:34.000Z",
+                              "updatedAt": "2026-07-28T03:26:34.000Z",
+                              "uid": "35240-16bda936-a2cb-4e79-9111-aefaf75bfa4b"
+                            }
+                          ],
+                          "id": "a3617f10-d376-463d-b8ed-b2052ffc5a22",
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-a3617f10-d376-463d-b8ed-b2052ffc5a22"
+                        },
+                        {
+                          "name": "GetWallet",
+                          "id": "a41e678e-b867-46bb-826a-217aa9ec2584",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id?view=FULL&includeReferencedResources=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "wallets",
+                                ":wallet_id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Whether to include the converted value (`wallet.converted_value`) in the response.\n\n - BASIC: The default view. Does not include the converted value.\n - FULL: Calculate and include the converted value and additional fields.",
+                                  "key": "view",
+                                  "value": "FULL"
+                                },
+                                {
+                                  "description": "Include referenced resources in the response.",
+                                  "key": "includeReferencedResources",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "1392ced8-6279-411f-b42d-b39142d18e2b",
+                                  "key": "vault_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "bc40598c-5567-49ad-85f8-b5f38e8d3697",
+                                  "key": "wallet_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Retrieve a wallet by resource name."
+                          },
+                          "response": [
+                            {
+                              "id": "23cc1c0c-ff13-4285-abb7-d8d29fa6d79f",
+                              "name": "A successful response.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/:wallet_id?view=FULL&includeReferencedResources=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "vaults",
+                                    ":vault_id",
+                                    "wallets",
+                                    ":wallet_id"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Whether to include the converted value (`wallet.converted_value`) in the response.\n\n - BASIC: The default view. Does not include the converted value.\n - FULL: Calculate and include the converted value and additional fields.",
+                                      "key": "view",
+                                      "value": "FULL"
+                                    },
+                                    {
+                                      "description": "Include referenced resources in the response.",
+                                      "key": "includeReferencedResources",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vault_id"
+                                    },
+                                    {
+                                      "key": "wallet_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"wallet\": {\n    \"displayName\": \"<string>\",\n    \"networks\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"name\": \"<string>\",\n    \"external\": \"<boolean>\",\n    \"archived\": \"<boolean>\",\n    \"convertedValue\": {\n      \"amount\": \"<string>\",\n      \"currencyCode\": \"<string>\"\n    },\n    \"hasFrozenAssets\": \"<boolean>\",\n    \"evmDetails\": {\n      \"address\": \"<string>\"\n    },\n    \"tronDetails\": {\n      \"address\": \"<string>\"\n    },\n    \"tonDetails\": {\n      \"address\": \"<string>\"\n    },\n    \"solanaDetails\": {\n      \"address\": \"<string>\"\n    },\n    \"xrplDetails\": {\n      \"signingPubKey\": \"<string>\"\n    },\n    \"createParams\": {\n      \"walletGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"btcDetails\": {\n      \"btcNetworkDetails\": [\n        {\n          \"network\": \"<string>\",\n          \"mainAddress\": \"<string>\",\n          \"xpub\": \"<string>\"\n        },\n        {\n          \"network\": \"<string>\",\n          \"mainAddress\": \"<string>\",\n          \"xpub\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T03:26:34.000Z",
+                              "updatedAt": "2026-07-28T03:26:34.000Z",
+                              "uid": "35240-23cc1c0c-ff13-4285-abb7-d8d29fa6d79f"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-a41e678e-b867-46bb-826a-217aa9ec2584"
+                        }
+                      ],
+                      "id": "dc55b870-eb25-4315-8f7f-088dcbee208f",
+                      "createdAt": "2026-07-28T03:26:34.000Z",
+                      "updatedAt": "2026-07-28T03:26:34.000Z",
+                      "uid": "35240-dc55b870-eb25-4315-8f7f-088dcbee208f"
+                    },
+                    {
+                      "name": "{wallet_id}:archive",
+                      "item": [
+                        {
+                          "name": "ArchiveWallet",
+                          "id": "c3e49c57-c750-4e03-92c1-789ef14a4c92",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"allowMissing\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/{{wallet_id}}:archive",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "wallets",
+                                "{{wallet_id}}:archive"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c8a1a7f0-0e08-4923-a958-c7adf2f33c84",
+                                  "key": "vault_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Archive a wallet."
+                          },
+                          "response": [
+                            {
+                              "id": "96e0734f-1fa6-4ff9-b50f-fcd48439a6b9",
+                              "name": "A successful response.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"allowMissing\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/{{wallet_id}}:archive",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "vaults",
+                                    ":vault_id",
+                                    "wallets",
+                                    "{{wallet_id}}:archive"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vault_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T03:26:34.000Z",
+                              "updatedAt": "2026-07-28T03:26:34.000Z",
+                              "uid": "35240-96e0734f-1fa6-4ff9-b50f-fcd48439a6b9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-c3e49c57-c750-4e03-92c1-789ef14a4c92"
+                        }
+                      ],
+                      "id": "3aaec887-5db5-4378-b1bc-e4adac555fa4",
+                      "createdAt": "2026-07-28T03:26:34.000Z",
+                      "updatedAt": "2026-07-28T03:26:34.000Z",
+                      "uid": "35240-3aaec887-5db5-4378-b1bc-e4adac555fa4"
+                    },
+                    {
+                      "name": "{wallet_id}:unarchive",
+                      "item": [
+                        {
+                          "name": "UnarchiveWallet",
+                          "id": "5a650717-40e8-43ac-8567-7f83c3e232b0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"allowMissing\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/{{wallet_id}}:unarchive",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "wallets",
+                                "{{wallet_id}}:unarchive"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0f440436-0b0f-4d56-ba32-b2fdcde60df6",
+                                  "key": "vault_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Unarchive a wallet."
+                          },
+                          "response": [
+                            {
+                              "id": "f20ce561-3355-4c0c-ba4c-e9070ff83a03",
+                              "name": "A successful response.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"allowMissing\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets/{{wallet_id}}:unarchive",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "vaults",
+                                    ":vault_id",
+                                    "wallets",
+                                    "{{wallet_id}}:unarchive"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vault_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T03:26:34.000Z",
+                              "updatedAt": "2026-07-28T03:26:34.000Z",
+                              "uid": "35240-f20ce561-3355-4c0c-ba4c-e9070ff83a03"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-5a650717-40e8-43ac-8567-7f83c3e232b0"
+                        }
+                      ],
+                      "id": "869eb8b3-9ca1-43ca-a607-ed1c96b44b7b",
+                      "createdAt": "2026-07-28T03:26:34.000Z",
+                      "updatedAt": "2026-07-28T03:26:34.000Z",
+                      "uid": "35240-869eb8b3-9ca1-43ca-a607-ed1c96b44b7b"
+                    },
+                    {
+                      "name": "ListWallets",
+                      "id": "f95e92bd-4800-4fea-8c04-c228e2ac18bb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets?view=FULL&showArchived=<boolean>&filter=<string>&orderBy=<string>&pageSize=<integer>&pageToken=<string>&skip=<integer>&includeReferencedResources=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "wallets"
+                          ],
+                          "query": [
+                            {
+                              "description": "Whether to include the converted value (`wallet.converted_value`) in the response.\n\n - BASIC: The default view. Does not include the converted value.\n - FULL: Calculate and include the converted value and additional fields.",
+                              "key": "view",
+                              "value": "FULL"
+                            },
+                            {
+                              "description": "Optional. When true, archived wallets are included together with non-archived wallets.\nWhen false or omitted, only non-archived wallets are returned.",
+                              "key": "showArchived",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Filter results using EBNF syntax.\n\nSupported fields:\n* `displayName` (with regex support)\n* `createTime`\n* `external`\n\nSupported functions:\n* `wallet_archived()` - matches archived wallets. Takes no arguments.\n  Use together with `show_archived` to get only archived wallets.\n\nExamples:\n- `displayName = \"My Wallet\"` (All wallets with the display name \"My Wallet\")\n- `regex(displayName, \"^My \")` (All wallets with names starting with \"My \")\n- `regex(displayName, \"(?i)^mY \")` (All wallets with names starting with \"My \", case insensitive)\n- `external`, `-external`, `NOT external`\n- `createTime > \"2023-08-29T18:04:00Z\"`\n- `createTime > \"2023-08-29T18:04:00Z\" AND displayName = \"My Wallet\"`\n- `wallet_archived()` (Archived wallets only; set `show_archived` so archived wallets are returned)",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "SQL-like ordering specifications.\nSupports the fields\n* `display_name`\n* `create_time`\n* `update_time`\n* `converted_value.amount` (available through the FULL view).",
+                              "key": "orderBy",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of items to return. The service may return fewer than\nthis value.\n\nIf unspecified, at most 50 will be returned.\nThe maximum value is 1000; values above 1000 will be coerced to 1000.",
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "A page token, received from the previous list call as `nextPageToken`.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters must match the call that provided\nthe page token.",
+                              "key": "pageToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases.",
+                              "key": "skip",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Include referenced resources in the response.",
+                              "key": "includeReferencedResources",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "ddf54b78-9e93-4628-8e96-7b749011f420",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a list of all wallets in a vault."
+                      },
+                      "response": [
+                        {
+                          "id": "de270d0d-f7c1-4af9-bda4-e69470fc3587",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets?view=FULL&showArchived=<boolean>&filter=<string>&orderBy=<string>&pageSize=<integer>&pageToken=<string>&skip=<integer>&includeReferencedResources=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "wallets"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Whether to include the converted value (`wallet.converted_value`) in the response.\n\n - BASIC: The default view. Does not include the converted value.\n - FULL: Calculate and include the converted value and additional fields.",
+                                  "key": "view",
+                                  "value": "FULL"
+                                },
+                                {
+                                  "description": "Optional. When true, archived wallets are included together with non-archived wallets.\nWhen false or omitted, only non-archived wallets are returned.",
+                                  "key": "showArchived",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Filter results using EBNF syntax.\n\nSupported fields:\n* `displayName` (with regex support)\n* `createTime`\n* `external`\n\nSupported functions:\n* `wallet_archived()` - matches archived wallets. Takes no arguments.\n  Use together with `show_archived` to get only archived wallets.\n\nExamples:\n- `displayName = \"My Wallet\"` (All wallets with the display name \"My Wallet\")\n- `regex(displayName, \"^My \")` (All wallets with names starting with \"My \")\n- `regex(displayName, \"(?i)^mY \")` (All wallets with names starting with \"My \", case insensitive)\n- `external`, `-external`, `NOT external`\n- `createTime > \"2023-08-29T18:04:00Z\"`\n- `createTime > \"2023-08-29T18:04:00Z\" AND displayName = \"My Wallet\"`\n- `wallet_archived()` (Archived wallets only; set `show_archived` so archived wallets are returned)",
+                                  "key": "filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "SQL-like ordering specifications.\nSupports the fields\n* `display_name`\n* `create_time`\n* `update_time`\n* `converted_value.amount` (available through the FULL view).",
+                                  "key": "orderBy",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The maximum number of items to return. The service may return fewer than\nthis value.\n\nIf unspecified, at most 50 will be returned.\nThe maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "A page token, received from the previous list call as `nextPageToken`.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters must match the call that provided\nthe page token.",
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases.",
+                                  "key": "skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Include referenced resources in the response.",
+                                  "key": "includeReferencedResources",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"wallets\": [\n    {\n      \"displayName\": \"<string>\",\n      \"networks\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"external\": \"<boolean>\",\n      \"archived\": \"<boolean>\",\n      \"convertedValue\": {\n        \"amount\": \"<string>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"hasFrozenAssets\": \"<boolean>\",\n      \"evmDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"tronDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"tonDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"solanaDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"xrplDetails\": {\n        \"signingPubKey\": \"<string>\"\n      },\n      \"createParams\": {\n        \"walletGroups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"btcDetails\": {\n        \"btcNetworkDetails\": [\n          {\n            \"network\": \"<string>\",\n            \"mainAddress\": \"<string>\",\n            \"xpub\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"mainAddress\": \"<string>\",\n            \"xpub\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"displayName\": \"<string>\",\n      \"networks\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"external\": \"<boolean>\",\n      \"archived\": \"<boolean>\",\n      \"convertedValue\": {\n        \"amount\": \"<string>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"hasFrozenAssets\": \"<boolean>\",\n      \"evmDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"tronDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"tonDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"solanaDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"xrplDetails\": {\n        \"signingPubKey\": \"<string>\"\n      },\n      \"createParams\": {\n        \"walletGroups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"btcDetails\": {\n        \"btcNetworkDetails\": [\n          {\n            \"network\": \"<string>\",\n            \"mainAddress\": \"<string>\",\n            \"xpub\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"mainAddress\": \"<string>\",\n            \"xpub\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"totalSize\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-de270d0d-f7c1-4af9-bda4-e69470fc3587"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:34.000Z",
+                      "updatedAt": "2026-07-28T03:26:34.000Z",
+                      "uid": "35240-f95e92bd-4800-4fea-8c04-c228e2ac18bb"
+                    },
+                    {
+                      "name": "CreateWallet",
+                      "id": "ad8bce6e-0633-4457-9c2a-384eea542ea9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"displayName\": \"<string>\",\n  \"networks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"external\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"convertedValue\": {\n    \"amount\": \"<string>\",\n    \"currencyCode\": \"<string>\"\n  },\n  \"hasFrozenAssets\": \"<boolean>\",\n  \"evmDetails\": {\n    \"address\": \"<string>\"\n  },\n  \"tronDetails\": {\n    \"address\": \"<string>\"\n  },\n  \"tonDetails\": {\n    \"address\": \"<string>\"\n  },\n  \"solanaDetails\": {\n    \"address\": \"<string>\"\n  },\n  \"xrplDetails\": {\n    \"signingPubKey\": \"<string>\"\n  },\n  \"createParams\": {\n    \"walletGroups\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"btcDetails\": {\n    \"btcNetworkDetails\": [\n      {\n        \"network\": \"<string>\",\n        \"mainAddress\": \"<string>\",\n        \"xpub\": \"<string>\"\n      },\n      {\n        \"network\": \"<string>\",\n        \"mainAddress\": \"<string>\",\n        \"xpub\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "wallets"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9f5318bc-ea33-414d-89b0-69a79566df01",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Create a new wallet."
+                      },
+                      "response": [
+                        {
+                          "id": "26dd4f30-e9ba-47cb-9048-8df07e25fc6c",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"displayName\": \"<string>\",\n  \"networks\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"external\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"convertedValue\": {\n    \"amount\": \"<string>\",\n    \"currencyCode\": \"<string>\"\n  },\n  \"hasFrozenAssets\": \"<boolean>\",\n  \"evmDetails\": {\n    \"address\": \"<string>\"\n  },\n  \"tronDetails\": {\n    \"address\": \"<string>\"\n  },\n  \"tonDetails\": {\n    \"address\": \"<string>\"\n  },\n  \"solanaDetails\": {\n    \"address\": \"<string>\"\n  },\n  \"xrplDetails\": {\n    \"signingPubKey\": \"<string>\"\n  },\n  \"createParams\": {\n    \"walletGroups\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"btcDetails\": {\n    \"btcNetworkDetails\": [\n      {\n        \"network\": \"<string>\",\n        \"mainAddress\": \"<string>\",\n        \"xpub\": \"<string>\"\n      },\n      {\n        \"network\": \"<string>\",\n        \"mainAddress\": \"<string>\",\n        \"xpub\": \"<string>\"\n      }\n    ]\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "wallets"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"wallet\": {\n    \"displayName\": \"<string>\",\n    \"networks\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"name\": \"<string>\",\n    \"external\": \"<boolean>\",\n    \"archived\": \"<boolean>\",\n    \"convertedValue\": {\n      \"amount\": \"<string>\",\n      \"currencyCode\": \"<string>\"\n    },\n    \"hasFrozenAssets\": \"<boolean>\",\n    \"evmDetails\": {\n      \"address\": \"<string>\"\n    },\n    \"tronDetails\": {\n      \"address\": \"<string>\"\n    },\n    \"tonDetails\": {\n      \"address\": \"<string>\"\n    },\n    \"solanaDetails\": {\n      \"address\": \"<string>\"\n    },\n    \"xrplDetails\": {\n      \"signingPubKey\": \"<string>\"\n    },\n    \"createParams\": {\n      \"walletGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"btcDetails\": {\n      \"btcNetworkDetails\": [\n        {\n          \"network\": \"<string>\",\n          \"mainAddress\": \"<string>\",\n          \"xpub\": \"<string>\"\n        },\n        {\n          \"network\": \"<string>\",\n          \"mainAddress\": \"<string>\",\n          \"xpub\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-26dd4f30-e9ba-47cb-9048-8df07e25fc6c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:34.000Z",
+                      "updatedAt": "2026-07-28T03:26:34.000Z",
+                      "uid": "35240-ad8bce6e-0633-4457-9c2a-384eea542ea9"
+                    }
+                  ],
+                  "id": "c6ee8bbf-45ad-40cc-bc7d-8f08cf2893f1",
+                  "createdAt": "2026-07-28T03:26:34.000Z",
+                  "updatedAt": "2026-07-28T03:26:34.000Z",
+                  "uid": "35240-c6ee8bbf-45ad-40cc-bc7d-8f08cf2893f1"
+                },
+                {
+                  "name": "wallets:batchGet",
+                  "item": [
+                    {
+                      "name": "BatchGetWallets",
+                      "id": "b6198fd1-301e-4eff-9dc6-eeb005a593eb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets:batchGet?names=<string>&names=<string>&view=FULL",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "wallets:batchGet"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The resource names of the wallets to retrieve.\n\nFormat: `vaults/{vault_id}/wallets/{wallet_id}`",
+                              "key": "names",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The resource names of the wallets to retrieve.\n\nFormat: `vaults/{vault_id}/wallets/{wallet_id}`",
+                              "key": "names",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Whether to include the converted value (`wallet.converted_value`) in the response.\n\n - BASIC: The default view. Does not include the converted value.\n - FULL: Calculate and include the converted value and additional fields.",
+                              "key": "view",
+                              "value": "FULL"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "d7ae43de-aae9-42d2-98d1-3f8676c8ded3",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve multiple wallets by resource name."
+                      },
+                      "response": [
+                        {
+                          "id": "61ab82c6-cd12-4c6a-8e38-f4da38d964e5",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets:batchGet?names=<string>&view=FULL",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "wallets:batchGet"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The resource names of the wallets to retrieve.\n\nFormat: `vaults/{vault_id}/wallets/{wallet_id}`",
+                                  "key": "names",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Whether to include the converted value (`wallet.converted_value`) in the response.\n\n - BASIC: The default view. Does not include the converted value.\n - FULL: Calculate and include the converted value and additional fields.",
+                                  "key": "view",
+                                  "value": "FULL"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"wallets\": [\n    {\n      \"displayName\": \"<string>\",\n      \"networks\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"external\": \"<boolean>\",\n      \"archived\": \"<boolean>\",\n      \"convertedValue\": {\n        \"amount\": \"<string>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"hasFrozenAssets\": \"<boolean>\",\n      \"evmDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"tronDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"tonDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"solanaDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"xrplDetails\": {\n        \"signingPubKey\": \"<string>\"\n      },\n      \"createParams\": {\n        \"walletGroups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"btcDetails\": {\n        \"btcNetworkDetails\": [\n          {\n            \"network\": \"<string>\",\n            \"mainAddress\": \"<string>\",\n            \"xpub\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"mainAddress\": \"<string>\",\n            \"xpub\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"displayName\": \"<string>\",\n      \"networks\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"name\": \"<string>\",\n      \"external\": \"<boolean>\",\n      \"archived\": \"<boolean>\",\n      \"convertedValue\": {\n        \"amount\": \"<string>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"hasFrozenAssets\": \"<boolean>\",\n      \"evmDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"tronDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"tonDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"solanaDetails\": {\n        \"address\": \"<string>\"\n      },\n      \"xrplDetails\": {\n        \"signingPubKey\": \"<string>\"\n      },\n      \"createParams\": {\n        \"walletGroups\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"btcDetails\": {\n        \"btcNetworkDetails\": [\n          {\n            \"network\": \"<string>\",\n            \"mainAddress\": \"<string>\",\n            \"xpub\": \"<string>\"\n          },\n          {\n            \"network\": \"<string>\",\n            \"mainAddress\": \"<string>\",\n            \"xpub\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-61ab82c6-cd12-4c6a-8e38-f4da38d964e5"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:34.000Z",
+                      "updatedAt": "2026-07-28T03:26:34.000Z",
+                      "uid": "35240-b6198fd1-301e-4eff-9dc6-eeb005a593eb"
+                    }
+                  ],
+                  "id": "03b610a5-0cc1-4e32-9b46-9cdcaabfd6b3",
+                  "createdAt": "2026-07-28T03:26:34.000Z",
+                  "updatedAt": "2026-07-28T03:26:34.000Z",
+                  "uid": "35240-03b610a5-0cc1-4e32-9b46-9cdcaabfd6b3"
+                },
+                {
+                  "name": "wallets:batchArchive",
+                  "item": [
+                    {
+                      "name": "BatchArchiveWallets",
+                      "id": "37094b36-3df0-448f-8ef5-11bed603c0e3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowMissing\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets:batchArchive",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "wallets:batchArchive"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e55c9a98-81dd-41aa-828d-a391b8a775e0",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Archive multiple wallets."
+                      },
+                      "response": [
+                        {
+                          "id": "bed16617-44ce-4137-8750-87c145eb7d37",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowMissing\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets:batchArchive",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "wallets:batchArchive"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-bed16617-44ce-4137-8750-87c145eb7d37"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:34.000Z",
+                      "updatedAt": "2026-07-28T03:26:34.000Z",
+                      "uid": "35240-37094b36-3df0-448f-8ef5-11bed603c0e3"
+                    }
+                  ],
+                  "id": "ebf0c0fc-8775-4057-ba74-cda23534d6c8",
+                  "createdAt": "2026-07-28T03:26:34.000Z",
+                  "updatedAt": "2026-07-28T03:26:34.000Z",
+                  "uid": "35240-ebf0c0fc-8775-4057-ba74-cda23534d6c8"
+                },
+                {
+                  "name": "wallets:batchUnarchive",
+                  "item": [
+                    {
+                      "name": "BatchUnarchiveWallets",
+                      "id": "be9db30c-f9c1-4a24-b0a8-ec8913e4ae42",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowMissing\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets:batchUnarchive",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "wallets:batchUnarchive"
+                          ],
+                          "variable": [
+                            {
+                              "id": "92e45368-4324-4379-90ae-4d35cd421475",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Unarchive multiple wallets."
+                      },
+                      "response": [
+                        {
+                          "id": "88d116e9-0bb5-4ae5-8cf8-a5c2438dedb1",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allowMissing\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/wallets:batchUnarchive",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "wallets:batchUnarchive"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T03:26:34.000Z",
+                          "updatedAt": "2026-07-28T03:26:34.000Z",
+                          "uid": "35240-88d116e9-0bb5-4ae5-8cf8-a5c2438dedb1"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:34.000Z",
+                      "updatedAt": "2026-07-28T03:26:34.000Z",
+                      "uid": "35240-be9db30c-f9c1-4a24-b0a8-ec8913e4ae42"
+                    }
+                  ],
+                  "id": "f7f71945-3376-4948-9cee-682be14b38c7",
+                  "createdAt": "2026-07-28T03:26:34.000Z",
+                  "updatedAt": "2026-07-28T03:26:34.000Z",
+                  "uid": "35240-f7f71945-3376-4948-9cee-682be14b38c7"
+                }
+              ],
+              "id": "e1d88214-1e53-4235-be90-aed44cdad0c0",
+              "createdAt": "2026-07-28T03:26:34.000Z",
+              "updatedAt": "2026-07-28T03:26:34.000Z",
+              "uid": "35240-e1d88214-1e53-4235-be90-aed44cdad0c0"
+            }
+          ],
+          "id": "4ec35fde-f2a9-4854-b426-ac79be07788a",
+          "createdAt": "2026-07-28T03:26:34.000Z",
+          "updatedAt": "2026-07-28T03:26:34.000Z",
+          "uid": "35240-4ec35fde-f2a9-4854-b426-ac79be07788a"
+        }
+      ],
+      "id": "3fdf02d6-d2d5-479f-8612-5e6c57a950af",
+      "createdAt": "2026-07-28T03:26:34.000Z",
+      "updatedAt": "2026-07-28T03:26:34.000Z",
+      "uid": "35240-3fdf02d6-d2d5-479f-8612-5e6c57a950af"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.utila.io"
+    },
+    {
+      "key": "wallet_id",
+      "value": "<string>"
+    }
+  ]
+}

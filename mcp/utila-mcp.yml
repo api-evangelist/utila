@@ -1,0 +1,73 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/utila-v2-openapi-original.json
+notes: No official Utila-hosted MCP server was found. Candidate tool list derived
+  from the Utila API v2 OpenAPI operations (one tool per operationId).
+server:
+  name: utila
+  transport: http
+tools:
+- name: list_vaults
+  description: Retrieve a list of all vaults accessible to the authenticated user
+  source_operation: openapi/utila-v2-openapi-original.json#Vaults_ListVaults
+- name: get_vault
+  description: Retrieve a vault by resource name
+  source_operation: openapi/utila-v2-openapi-original.json#Vaults_GetVault
+- name: list_wallets
+  description: Retrieve a list of all wallets in a vault
+  source_operation: openapi/utila-v2-openapi-original.json#Wallets_ListWallets
+- name: create_wallet
+  description: Create a new wallet
+  source_operation: openapi/utila-v2-openapi-original.json#Wallets_CreateWallet
+- name: get_wallet
+  description: Retrieve a wallet by resource name
+  source_operation: openapi/utila-v2-openapi-original.json#Wallets_GetWallet
+- name: create_wallet_address
+  description: Generate a new address in a wallet for a blockchain network (MPC-derived)
+  source_operation: openapi/utila-v2-openapi-original.json#Wallets_CreateWalletAddress
+- name: list_wallet_addresses
+  description: Retrieve all wallet addresses of a specific wallet
+  source_operation: openapi/utila-v2-openapi-original.json#Wallets_ListWalletAddresses
+- name: query_balances
+  description: Retrieve all asset balances in all wallets in a vault
+  source_operation: openapi/utila-v2-openapi-original.json#Balances_QueryBalances
+- name: query_wallet_balances
+  description: Retrieve all asset balances in a wallet (supports '-' wildcard per AIP-159)
+  source_operation: openapi/utila-v2-openapi-original.json#Balances_QueryWalletBalances
+- name: query_wallet_utxos
+  description: Retrieve all UTXOs in a wallet
+  source_operation: openapi/utila-v2-openapi-original.json#Balances_QueryWalletUTXOs
+- name: list_transactions
+  description: Retrieve a list of all transactions in a vault
+  source_operation: openapi/utila-v2-openapi-original.json#Transactions_ListTransactions
+- name: get_transaction
+  description: Retrieve a transaction by resource name
+  source_operation: openapi/utila-v2-openapi-original.json#Transactions_GetTransaction
+- name: initiate_transaction
+  description: Initiate a new transaction
+  source_operation: openapi/utila-v2-openapi-original.json#Transactions_InitiateTransaction
+- name: estimate_transaction_fee
+  description: Estimate the fee for a transaction
+  source_operation: openapi/utila-v2-openapi-original.json#Transactions_EstimateTransactionFee
+- name: cancel_transaction
+  description: Cancel a transaction before it is signed
+  source_operation: openapi/utila-v2-openapi-original.json#Transactions_CancelTransaction
+- name: replace_transaction
+  description: Replace an existing signed-but-unmined transaction (EVM nonce, BTC RBF/CPFP)
+  source_operation: openapi/utila-v2-openapi-original.json#Transactions_ReplaceTransaction
+- name: publish_transaction
+  description: Manually publish a fully signed transaction to the blockchain (EVM only)
+  source_operation: openapi/utila-v2-openapi-original.json#Transactions_PublishTransaction
+- name: get_transaction_aml_screening
+  description: Get AML screening results for a screened transaction
+  source_operation: openapi/utila-v2-openapi-original.json#Transactions_GetTransactionAMLScreening
+- name: list_networks
+  description: List blockchain networks available for use
+  source_operation: openapi/utila-v2-openapi-original.json#Blockchains_ListNetworks
+- name: get_asset
+  description: Retrieve an asset by resource name
+  source_operation: openapi/utila-v2-openapi-original.json#Assets_GetAsset
+- name: list_address_book_entries
+  description: Retrieve all address book entries in a vault
+  source_operation: openapi/utila-v2-openapi-original.json#AddressBook_ListAddressBookEntries

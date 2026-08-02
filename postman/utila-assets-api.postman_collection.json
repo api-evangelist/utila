@@ -1,0 +1,388 @@
+{
+  "info": {
+    "_postman_id": "1ac80a1d-e430-410a-be0d-55fc04705165",
+    "name": "Utila Address Book Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:20.000Z",
+    "updatedAt": "2026-07-28T03:26:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1ac80a1d-e430-410a-be0d-55fc04705165"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "assets",
+          "item": [
+            {
+              "name": "{asset_id}",
+              "item": [
+                {
+                  "name": "GetAsset",
+                  "id": "99cb1ee9-989a-429e-ba0a-6c7b9d47b865",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/assets/:asset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "assets",
+                        ":asset_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6969a894-13db-49ef-b232-f18d1e1bb05c",
+                          "key": "asset_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Retrieves an asset by resource name."
+                  },
+                  "response": [
+                    {
+                      "id": "a625b8f4-0c4b-4e15-a533-166a59be29ad",
+                      "name": "A successful response.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/assets/:asset_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "assets",
+                            ":asset_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "asset_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"asset\": {\n    \"name\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"network\": \"<string>\",\n    \"type\": \"TOKEN\",\n    \"symbol\": \"<string>\",\n    \"decimals\": \"<integer>\",\n    \"convertedValue\": {\n      \"amount\": \"<string>\",\n      \"currencyCode\": \"<string>\"\n    },\n    \"tokenInfo\": {\n      \"contractAddress\": \"<string>\",\n      \"standard\": \"TIP20\",\n      \"denom\": \"<string>\",\n      \"cantonTokenDetails\": {\n        \"instrumentId\": \"<string>\",\n        \"instrumentAdmin\": \"<string>\"\n      },\n      \"tip20Currency\": \"<string>\",\n      \"suiTokenDetails\": {\n        \"gasless\": \"<boolean>\"\n      }\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T03:26:21.000Z",
+                      "updatedAt": "2026-07-28T03:26:21.000Z",
+                      "uid": "35240-a625b8f4-0c4b-4e15-a533-166a59be29ad"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:26:21.000Z",
+                  "updatedAt": "2026-07-28T03:26:21.000Z",
+                  "uid": "35240-99cb1ee9-989a-429e-ba0a-6c7b9d47b865"
+                }
+              ],
+              "id": "18f0a7d8-e752-41dc-b44f-a28bacbf0867",
+              "createdAt": "2026-07-28T03:26:21.000Z",
+              "updatedAt": "2026-07-28T03:26:21.000Z",
+              "uid": "35240-18f0a7d8-e752-41dc-b44f-a28bacbf0867"
+            }
+          ],
+          "id": "45a62b69-ef53-4c2f-b6d1-e8c746beac95",
+          "createdAt": "2026-07-28T03:26:21.000Z",
+          "updatedAt": "2026-07-28T03:26:21.000Z",
+          "uid": "35240-45a62b69-ef53-4c2f-b6d1-e8c746beac95"
+        },
+        {
+          "name": "assets:batchGet",
+          "item": [
+            {
+              "name": "BatchGetAssets",
+              "id": "70739d3a-37d6-4c58-9379-415425ccdaa6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/assets:batchGet?names=<string>&names=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "assets:batchGet"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Repeated resource names of the requested assets.\n\nFormat: `assets/{asset_id}`",
+                      "key": "names",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Repeated resource names of the requested assets.\n\nFormat: `assets/{asset_id}`",
+                      "key": "names",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves a list of assets by resource name."
+              },
+              "response": [
+                {
+                  "id": "2f0bd53a-1420-4195-906b-e659fedbf6b2",
+                  "name": "A successful response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/assets:batchGet?names=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "assets:batchGet"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Repeated resource names of the requested assets.\n\nFormat: `assets/{asset_id}`",
+                          "key": "names",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"assets\": [\n    {\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"type\": \"TOKEN\",\n      \"symbol\": \"<string>\",\n      \"decimals\": \"<integer>\",\n      \"convertedValue\": {\n        \"amount\": \"<string>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"tokenInfo\": {\n        \"contractAddress\": \"<string>\",\n        \"standard\": \"ERC1155\",\n        \"denom\": \"<string>\",\n        \"cantonTokenDetails\": {\n          \"instrumentId\": \"<string>\",\n          \"instrumentAdmin\": \"<string>\"\n        },\n        \"tip20Currency\": \"<string>\",\n        \"suiTokenDetails\": {\n          \"gasless\": \"<boolean>\"\n        }\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"type\": \"NATIVE_CURRENCY\",\n      \"symbol\": \"<string>\",\n      \"decimals\": \"<integer>\",\n      \"convertedValue\": {\n        \"amount\": \"<string>\",\n        \"currencyCode\": \"<string>\"\n      },\n      \"tokenInfo\": {\n        \"contractAddress\": \"<string>\",\n        \"standard\": \"ERC721\",\n        \"denom\": \"<string>\",\n        \"cantonTokenDetails\": {\n          \"instrumentId\": \"<string>\",\n          \"instrumentAdmin\": \"<string>\"\n        },\n        \"tip20Currency\": \"<string>\",\n        \"suiTokenDetails\": {\n          \"gasless\": \"<boolean>\"\n        }\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:26:21.000Z",
+                  "updatedAt": "2026-07-28T03:26:21.000Z",
+                  "uid": "35240-2f0bd53a-1420-4195-906b-e659fedbf6b2"
+                }
+              ],
+              "createdAt": "2026-07-28T03:26:21.000Z",
+              "updatedAt": "2026-07-28T03:26:21.000Z",
+              "uid": "35240-70739d3a-37d6-4c58-9379-415425ccdaa6"
+            }
+          ],
+          "id": "23499b22-1dff-4bd9-b5b0-a08bf8af3da1",
+          "createdAt": "2026-07-28T03:26:21.000Z",
+          "updatedAt": "2026-07-28T03:26:21.000Z",
+          "uid": "35240-23499b22-1dff-4bd9-b5b0-a08bf8af3da1"
+        },
+        {
+          "name": "vaults",
+          "item": [
+            {
+              "name": "{vault_id}",
+              "item": [
+                {
+                  "name": "assets",
+                  "item": [
+                    {
+                      "name": "{asset_id}",
+                      "item": [
+                        {
+                          "name": "GetVaultAsset",
+                          "id": "deaad88f-983b-4512-a123-0eca234e5001",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/assets/:asset_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "assets",
+                                ":asset_id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "010c7c51-8307-4406-8ccf-cee290c6aee8",
+                                  "key": "vault_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "9690898e-2a7b-4321-ae55-5d7ba0cf8008",
+                                  "key": "asset_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Retrieves a vault scoped asset (imported token or custom chain token) by resource name."
+                          },
+                          "response": [
+                            {
+                              "id": "3ae41bb0-d062-4df4-9eab-8bc543a6440a",
+                              "name": "A successful response.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v2/vaults/:vault_id/assets/:asset_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v2",
+                                    "vaults",
+                                    ":vault_id",
+                                    "assets",
+                                    ":asset_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "vault_id"
+                                    },
+                                    {
+                                      "key": "asset_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"asset\": {\n    \"name\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"network\": \"<string>\",\n    \"type\": \"TOKEN\",\n    \"symbol\": \"<string>\",\n    \"decimals\": \"<integer>\",\n    \"convertedValue\": {\n      \"amount\": \"<string>\",\n      \"currencyCode\": \"<string>\"\n    },\n    \"tokenInfo\": {\n      \"contractAddress\": \"<string>\",\n      \"standard\": \"TIP20\",\n      \"denom\": \"<string>\",\n      \"cantonTokenDetails\": {\n        \"instrumentId\": \"<string>\",\n        \"instrumentAdmin\": \"<string>\"\n      },\n      \"tip20Currency\": \"<string>\",\n      \"suiTokenDetails\": {\n        \"gasless\": \"<boolean>\"\n      }\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T03:26:21.000Z",
+                              "updatedAt": "2026-07-28T03:26:21.000Z",
+                              "uid": "35240-3ae41bb0-d062-4df4-9eab-8bc543a6440a"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:26:21.000Z",
+                          "updatedAt": "2026-07-28T03:26:21.000Z",
+                          "uid": "35240-deaad88f-983b-4512-a123-0eca234e5001"
+                        }
+                      ],
+                      "id": "8469d0c4-fcdc-49b5-b1f6-e3c74d2c369e",
+                      "createdAt": "2026-07-28T03:26:21.000Z",
+                      "updatedAt": "2026-07-28T03:26:21.000Z",
+                      "uid": "35240-8469d0c4-fcdc-49b5-b1f6-e3c74d2c369e"
+                    }
+                  ],
+                  "id": "e2c8f48e-65af-4d21-b320-0aa4de376a48",
+                  "createdAt": "2026-07-28T03:26:21.000Z",
+                  "updatedAt": "2026-07-28T03:26:21.000Z",
+                  "uid": "35240-e2c8f48e-65af-4d21-b320-0aa4de376a48"
+                }
+              ],
+              "id": "11644b63-9c56-44de-8374-eb020a60ccd7",
+              "createdAt": "2026-07-28T03:26:21.000Z",
+              "updatedAt": "2026-07-28T03:26:21.000Z",
+              "uid": "35240-11644b63-9c56-44de-8374-eb020a60ccd7"
+            }
+          ],
+          "id": "de649a43-2d50-4f7f-bac8-9e5d01604357",
+          "createdAt": "2026-07-28T03:26:21.000Z",
+          "updatedAt": "2026-07-28T03:26:21.000Z",
+          "uid": "35240-de649a43-2d50-4f7f-bac8-9e5d01604357"
+        }
+      ],
+      "id": "680a2370-d3a4-43ba-9e70-611aff944269",
+      "createdAt": "2026-07-28T03:26:21.000Z",
+      "updatedAt": "2026-07-28T03:26:21.000Z",
+      "uid": "35240-680a2370-d3a4-43ba-9e70-611aff944269"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.utila.io"
+    }
+  ]
+}

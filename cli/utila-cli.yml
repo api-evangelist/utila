@@ -1,0 +1,77 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.utila.io/reference/utila-cli
+name: Utila CLI
+description: First-party command-line interface for the Utila API. Manages vaults,
+  devices, MPC key shares, and transaction signing, and runs the Utila Co-Signer
+  for automated signing workflows. Runs on local machines, virtual machines, and
+  cloud servers.
+install:
+- method: download
+  url: https://console.utila.io/resource-center
+  notes: Binaries distributed via the Resource Center in the Utila Console (login
+    required). Docker usage documented at https://docs.utila.io/reference/cli-dockerfile.
+docs:
+- https://docs.utila.io/reference/utila-cli
+- https://docs.utila.io/reference/cli-authentication
+- https://docs.utila.io/reference/cli-configuration
+- https://docs.utila.io/reference/cli-state
+- https://docs.utila.io/reference/cli-downloads
+- https://docs.utila.io/reference/cli-dockerfile
+commands:
+- group: vaults
+  description: Vault operations
+  commands:
+  - name: list
+    description: List vaults
+- group: devices
+  description: Device operations
+  commands:
+  - name: list
+    description: List vault devices
+  - name: register
+    description: Create device
+- group: keys
+  description: Keys and key shares operations
+  commands:
+  - name: list
+    description: List vault keys
+  - name: download
+    description: Download and activate key share
+- group: transactions
+  description: Transaction operations
+  commands:
+  - name: sign
+    description: Sign a transaction
+- group: cosigner
+  description: Co-Signer operations
+  commands:
+  - name: run
+    description: Run the co-signer (--vault-id, --device-id, --sign-all-txs or
+      --webhook-url)
+- group: auth
+  description: CLI authentication configuration
+  commands:
+  - name: set-service-account-credentials
+    description: Configure service-account credentials
+- group: config
+  description: CLI configuration
+  commands:
+  - name: set
+    description: Set default parameters (account, vault, device, key)
+- group: utils
+  description: CLI utils
+  commands:
+  - name: generate-keypair
+    description: Generate RSA key-pair
+flows:
+- name: Authentication setup
+  description: Configure a service account with auth set-service-account-credentials,
+    select it with --account or $UTILA_ACCOUNT; private key via $UTILA_SA_PRIVATE_KEY
+    or <config-dir>/credentials/<account-email>/private_key.pem.
+- name: Device and key share setup
+  description: Generate a device keypair (utils generate-keypair), register the
+    device, then download and activate a key share (keys download).
+- name: Automated signing (Co-Signer)
+  description: Run cosigner run --vault-id <id> --device-id <id> with --sign-all-txs,
+    or --webhook-url for approve/deny decisions per transaction ({"signTransaction":true}).

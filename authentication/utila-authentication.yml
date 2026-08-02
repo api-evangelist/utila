@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.utila.io/reference/authentication
+docs: https://docs.utila.io/reference/authentication
+summary:
+  types:
+  - http
+  http_schemes:
+  - bearer
+  bearer_formats:
+  - JWT
+  notes: Service-account JWT bearer authentication. Clients self-sign short-lived
+    JWTs (RS256) with the service account's 4096-bit RSA private key; the public
+    key is registered in the Utila Console (Vault Settings -> Service Accounts,
+    subject to admin quorum approval).
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/utila-v2-openapi-original.json
+  details:
+    token_generation: Self-signed JWT using the service account RSA private key,
+      algorithm RS256
+    claims:
+      sub: Service account email (e.g. my-service-account@vault-aa11bb2cc33dd44.utilaserviceaccount.io)
+      aud: https://api.utila.io/
+      exp: Expiration time, no longer than 1 hour after current time or iat
+    header: 'Authorization: Bearer <token>'
+    key_type: RSA 4096-bit keypair; public key registered in console
+    service_accounts: Created by vault admins in Console under Vault Settings ->
+      Service Accounts; must be added as a member to each vault (admin quorum
+      approval)

@@ -1,0 +1,113 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/utila-v2-openapi-original.json
+description: Entity graph derived from the Utila API v2 OpenAPI - Google
+  AIP-style resource names encode ownership (vaults/{vault_id}/wallets/{wallet_id}/...),
+  and core entities are the v2* component schemas (245 schemas total; most of
+  the remainder are chain-specific transaction detail types for EVM, BTC,
+  Solana, Stellar, TRON, TON, Sui, Aptos, XRPL, Substrate, Theta, and Aleo).
+entities:
+- name: Vault
+  schema: v2Vault
+  resource_name: vaults/{vault_id}
+  description: An organization's workspace; the root container for all other
+    resources. Quorum policies govern sensitive actions.
+- name: Wallet
+  schema: v2Wallet
+  resource_name: vaults/{vault_id}/wallets/{wallet_id}
+  description: MPC wallet inside a vault; chain-family details in
+    v2WalletEVMDetails/v2WalletBTCDetails/WalletSolanaDetails etc.
+- name: WalletAddress
+  schema: v2WalletAddress
+  resource_name: vaults/{vault_id}/wallets/{wallet_id}/addresses/{address_id}
+  description: Blockchain address derived from the wallet's MPC key (ECDSA or
+    EdDSA depending on chain).
+- name: Transaction
+  schema: v2Transaction
+  resource_name: vaults/{vault_id}/transactions/{transaction_id}
+  description: Transfer or contract interaction; chain-specific payloads,
+    state machine (v2TransactionStateEnum), fee, simulation, and AML screening.
+- name: TransactionRequest
+  schema: v2TransactionRequest
+  resource_name: vaults/{vault_id}/transactionRequests/{transaction_request_id}
+  description: Approval-workflow request voted on via
+    Transactions_VoteOnTransactionRequest (quorum policy).
+- name: AddressBookEntry
+  schema: v2AddressBookEntry
+  resource_name: vaults/{vault_id}/addressBookEntries/{entry_id}
+  description: Saved counterparty address; supports groups and signed/unsigned
+    batch creation.
+- name: Balance
+  schema: v2WalletBalance / v2WalletAddressBalance / v2Balance
+  description: Asset balance at vault, wallet, or address scope; AIP-159 '-'
+    wildcard aggregates across parents.
+- name: UTXO
+  schema: apiv2UTXO
+  description: Unspent output for UTXO chains, listed per wallet.
+- name: Asset
+  schema: v2Asset
+  resource_name: assets/{asset_id}
+  description: Global asset registry entry; vault-scoped imported tokens are
+    VaultAssets.
+- name: Network
+  schema: v2Network
+  resource_name: networks/{network_id}
+  description: Supported blockchain network; custom EVM networks are
+    vault-scoped (ListVaultNetworks).
+- name: User
+  schema: v2User
+  description: Vault member (human or API service account) with role/status
+    enums.
+relationships:
+- from: Vault
+  to: Wallet
+  type: has_many
+  via: parent resource name (vaults/{vault_id}/wallets)
+- from: Vault
+  to: Transaction
+  type: has_many
+  via: parent resource name (vaults/{vault_id}/transactions)
+- from: Vault
+  to: TransactionRequest
+  type: has_many
+  via: parent resource name
+- from: Vault
+  to: AddressBookEntry
+  type: has_many
+  via: parent resource name
+- from: Vault
+  to: User
+  type: has_many
+  via: vault membership (service accounts added subject to quorum)
+- from: Wallet
+  to: WalletAddress
+  type: has_many
+  via: parent resource name (…/wallets/{wallet_id}/addresses)
+- from: Wallet
+  to: Balance
+  type: has_many
+  via: Balances_QueryWalletBalances parent
+- from: Wallet
+  to: UTXO
+  type: has_many
+  via: Balances_QueryWalletUTXOs parent
+- from: Transaction
+  to: Asset
+  type: belongs_to
+  via: asset resource-name reference in transfer details (v2AssetTransfer)
+- from: Transaction
+  to: Network
+  type: belongs_to
+  via: network resource-name reference in chain-specific details
+- from: Transaction
+  to: TransactionAMLScreening
+  type: has_one
+  via: Transactions_GetTransactionAMLScreening
+- from: Transaction
+  to: TransactionSimulation
+  type: has_one
+  via: Transactions_GetLatestTransactionSimulation
+- from: Asset
+  to: Network
+  type: belongs_to
+  via: network reference in asset token info

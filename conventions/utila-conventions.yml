@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.utila.io/ + openapi/utila-v2-openapi-original.json
+style: Google AIP resource-oriented REST (resource names like
+  vaults/{vault}/wallets/{wallet}; batch Get/Create methods; AIP-159 '-'
+  wildcard on parent collections)
+authentication:
+  style: Service-account self-signed JWT (RS256, RSA-4096) as Authorization
+    Bearer; max 1 hour token lifetime
+  artifact: authentication/utila-authentication.yml
+idempotency:
+  supported: false
+  notes: No Idempotency-Key header or idempotency contract documented in the
+    API reference or OpenAPI as of the capture date. Transaction replacement
+    semantics (nonce/RBF) are handled via Transactions_ReplaceTransaction.
+pagination:
+  style: page-token (Google AIP-158)
+  request_params: [pageSize, pageToken, skip]
+  ordering_param: orderBy
+  notes: 7 list/query operations paginate with pageSize/pageToken.
+filtering:
+  param: filter
+  docs: https://docs.utila.io/reference/filtering
+  notes: List and Query methods accept a filter expression.
+partial_responses:
+  param: view
+  notes: Several Get/List operations accept a view parameter;
+    includeReferencedResources embeds referenced resources.
+resource_names:
+  pattern: vaults/{vault_id}[/wallets/{wallet_id}][/transactions/{transaction_id}]
+  wildcard: "'-' as parent segment queries across the collection (AIP-159)"
+versioning:
+  scheme: uri-path (current v2; v1alpha1 deprecated)
+  artifact: lifecycle/utila-lifecycle.yml
+errors:
+  envelope: gRPC status codes plus Utila-specific numeric error codes
+  artifact: errors/utila-problem-types.yml
+rate_limits:
+  documented: false
+  notes: No rate-limit signaling documented in the API reference as of the
+    capture date.
+webhooks:
+  artifact: asyncapi/utila-webhooks.yml

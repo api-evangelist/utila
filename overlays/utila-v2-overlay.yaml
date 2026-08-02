@@ -1,0 +1,30 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Utila API
+  version: 1.0.0
+extends: openapi/utila-v2-openapi-original.json
+x-generated: '2026-07-21'
+x-method: generated
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: utila
+      profile: https://raw.githubusercontent.com/api-evangelist/utila/refs/heads/main/apis.yml
+      artifacts:
+        authentication: authentication/utila-authentication.yml
+        errors: errors/utila-problem-types.yml
+        webhooks: asyncapi/utila-webhooks.yml
+        conventions: conventions/utila-conventions.yml
+        lifecycle: lifecycle/utila-lifecycle.yml
+- target: $.info
+  update:
+    contact:
+      name: Utila
+      url: https://utila.io/
+    x-status-page: https://status.utila.io/
+    x-trust-center: https://trust.utila.io/
+- target: $.externalDocs
+  update:
+    description: Utila API Reference
+    url: https://docs.utila.io/

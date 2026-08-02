@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.utila.io/ + https://status.utila.io/ + OpenAPI Changelog tag
+versioning:
+  scheme: uri-path named versions (v1alpha1, v2)
+  current: v2
+  docs: https://docs.utila.io/reference/api-overview
+deprecation:
+  policy: Version deprecations announced in the API reference Changelog section;
+    v1alpha1 planned to be deprecated by 01/03/2025 in favor of v2.
+  sunset_header: false
+status_page: https://status.utila.io/
+deprecated_operations: []
+notes: status.utila.io returned HTTP 200 with title "Utila Status" (uptime/
+  operational component page) at probe time. No RFC 8594 Sunset/Deprecation
+  header support documented. No deprecated:true operations in the v2 OpenAPI.

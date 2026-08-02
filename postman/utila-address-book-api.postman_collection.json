@@ -1,0 +1,708 @@
+{
+  "info": {
+    "_postman_id": "ed51087f-b3e4-4a92-9012-37a755b8f060",
+    "name": "Utila Address Book API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:19.000Z",
+    "updatedAt": "2026-07-28T03:26:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed51087f-b3e4-4a92-9012-37a755b8f060"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "vaults",
+          "item": [
+            {
+              "name": "{vault_id}",
+              "item": [
+                {
+                  "name": "addressBookEntries",
+                  "item": [
+                    {
+                      "name": "ListAddressBookEntries",
+                      "id": "8a3c6252-82fe-4bbe-a5ad-82a71dc39857",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries?pageSize=<integer>&pageToken=<string>&filter=<string>&orderBy=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "addressBookEntries"
+                          ],
+                          "query": [
+                            {
+                              "description": "The maximum number of address book entries to return.\nThe service may return fewer than this value.\nIf unspecified, at most 50 address book entries will be returned.\nThe maximum value is 1000; values above 1000 will be coerced to 1000.",
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "A page token, received from a previous `ListAddressBookEntries` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `ListAddressBookEntries` must\nmatch the call that provided the page token.",
+                              "key": "pageToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A filter expression that filters address book entries listed in the response.\n\nSupported fields and functions:\n| Name | Description | Example |\n|------|-------------|---------|\n| `network` | Filter by one or more networks (`string...`). | `network(\"networks/ethereum-mainnet\")` |\n| `address` | Filter by one or more addresses, case-insensitive (`string...`). | `address(\"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\")` |\n| `display_name` | Filter by one or more display names, exact match and case-sensitive, supports a maximum of 100 display names. (`string...`). | `display_name(\"Cold Storage\", \"My Wallet\")` |\n| `create_time` | Filter by creation time (`string` comparison). | `create_time > \"2023-08-29T18:04:00Z\"` |",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A comma-separated list of fields by which to order the results.\nValid fields are:\n  * `create_time`\n  * `display_name`\n  * `address`\n  * `network`\n\nThe default sorting order is ascending. To specify descending order for a field, a suffix ` desc` should be appended to the field name. For example: `create_time desc`.\n\nRedundant field names are collapsed. For example if one specifies `create_time desc, create_time`, the results will be sorted by `create_time desc` only.\n\nIf a field is not specified, the results will be sorted by the default sorting order.",
+                              "key": "orderBy",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e5ebe16a-4114-489e-892c-4fccef9084fa",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a list of all address book entries in a vault."
+                      },
+                      "response": [
+                        {
+                          "id": "8a2d6fe8-ca93-4e0f-80ad-2cd6d0bae347",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries?pageSize=<integer>&pageToken=<string>&filter=<string>&orderBy=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "addressBookEntries"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The maximum number of address book entries to return.\nThe service may return fewer than this value.\nIf unspecified, at most 50 address book entries will be returned.\nThe maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "A page token, received from a previous `ListAddressBookEntries` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `ListAddressBookEntries` must\nmatch the call that provided the page token.",
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A filter expression that filters address book entries listed in the response.\n\nSupported fields and functions:\n| Name | Description | Example |\n|------|-------------|---------|\n| `network` | Filter by one or more networks (`string...`). | `network(\"networks/ethereum-mainnet\")` |\n| `address` | Filter by one or more addresses, case-insensitive (`string...`). | `address(\"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\")` |\n| `display_name` | Filter by one or more display names, exact match and case-sensitive, supports a maximum of 100 display names. (`string...`). | `display_name(\"Cold Storage\", \"My Wallet\")` |\n| `create_time` | Filter by creation time (`string` comparison). | `create_time > \"2023-08-29T18:04:00Z\"` |",
+                                  "key": "filter",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "A comma-separated list of fields by which to order the results.\nValid fields are:\n  * `create_time`\n  * `display_name`\n  * `address`\n  * `network`\n\nThe default sorting order is ascending. To specify descending order for a field, a suffix ` desc` should be appended to the field name. For example: `create_time desc`.\n\nRedundant field names are collapsed. For example if one specifies `create_time desc, create_time`, the results will be sorted by `create_time desc` only.\n\nIf a field is not specified, the results will be sorted by the default sorting order.",
+                                  "key": "orderBy",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"addressBookEntries\": [\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"name\": \"<string>\",\n      \"note\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"tracked\": \"<boolean>\",\n      \"associatedExternalWallet\": \"<string>\",\n      \"creator\": \"<string>\",\n      \"signed\": \"<boolean>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"name\": \"<string>\",\n      \"note\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"tracked\": \"<boolean>\",\n      \"associatedExternalWallet\": \"<string>\",\n      \"creator\": \"<string>\",\n      \"signed\": \"<boolean>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"totalSize\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:26:20.000Z",
+                          "updatedAt": "2026-07-28T03:26:20.000Z",
+                          "uid": "35240-8a2d6fe8-ca93-4e0f-80ad-2cd6d0bae347"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:20.000Z",
+                      "updatedAt": "2026-07-28T03:26:20.000Z",
+                      "uid": "35240-8a3c6252-82fe-4bbe-a5ad-82a71dc39857"
+                    }
+                  ],
+                  "id": "d5d7e26d-6bc3-496d-853b-d6b0fd69d12d",
+                  "createdAt": "2026-07-28T03:26:20.000Z",
+                  "updatedAt": "2026-07-28T03:26:20.000Z",
+                  "uid": "35240-d5d7e26d-6bc3-496d-853b-d6b0fd69d12d"
+                },
+                {
+                  "name": "addressBookEntries:batchGet",
+                  "item": [
+                    {
+                      "name": "BatchGetAddressBookEntries",
+                      "id": "383bb2f5-867d-4df8-958e-326258ebb709",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries:batchGet?names=<string>&names=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "addressBookEntries:batchGet"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The resource names of the address book entries to retrieve.\n\nFormat: `vaults/{vault_id}/addressBookEntries/{entry_id}`",
+                              "key": "names",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The resource names of the address book entries to retrieve.\n\nFormat: `vaults/{vault_id}/addressBookEntries/{entry_id}`",
+                              "key": "names",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "900c3c8f-70b4-4b29-9276-4958615ef437",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve multiple address book entries by resource name."
+                      },
+                      "response": [
+                        {
+                          "id": "2037468f-8d89-4546-8d0d-16f5d551e631",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries:batchGet?names=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "addressBookEntries:batchGet"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The resource names of the address book entries to retrieve.\n\nFormat: `vaults/{vault_id}/addressBookEntries/{entry_id}`",
+                                  "key": "names",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"addressBookEntries\": [\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"name\": \"<string>\",\n      \"note\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"tracked\": \"<boolean>\",\n      \"associatedExternalWallet\": \"<string>\",\n      \"creator\": \"<string>\",\n      \"signed\": \"<boolean>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"name\": \"<string>\",\n      \"note\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"tracked\": \"<boolean>\",\n      \"associatedExternalWallet\": \"<string>\",\n      \"creator\": \"<string>\",\n      \"signed\": \"<boolean>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:26:20.000Z",
+                          "updatedAt": "2026-07-28T03:26:20.000Z",
+                          "uid": "35240-2037468f-8d89-4546-8d0d-16f5d551e631"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:20.000Z",
+                      "updatedAt": "2026-07-28T03:26:20.000Z",
+                      "uid": "35240-383bb2f5-867d-4df8-958e-326258ebb709"
+                    }
+                  ],
+                  "id": "3f1bf3cb-d730-49d8-8846-aa2c28c98a63",
+                  "createdAt": "2026-07-28T03:26:20.000Z",
+                  "updatedAt": "2026-07-28T03:26:20.000Z",
+                  "uid": "35240-3f1bf3cb-d730-49d8-8846-aa2c28c98a63"
+                },
+                {
+                  "name": "addressBookEntries:batchCreate",
+                  "item": [
+                    {
+                      "name": "BatchCreateAddressBookEntries",
+                      "id": "d585821b-258d-43c0-a324-f4da383ac882",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"requests\": [\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries:batchCreate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "addressBookEntries:batchCreate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8dde3972-dcc3-4d66-9285-dec2dd6a8a56",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Batch creates address book entries."
+                      },
+                      "response": [
+                        {
+                          "id": "b3ae1524-c158-486e-8544-8035d71fbf39",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"requests\": [\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries:batchCreate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "addressBookEntries:batchCreate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"vaultAction\": {\n    \"name\": \"<string>\",\n    \"status\": \"EXPIRED\",\n    \"createTime\": \"<dateTime>\",\n    \"expireTime\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:26:20.000Z",
+                          "updatedAt": "2026-07-28T03:26:20.000Z",
+                          "uid": "35240-b3ae1524-c158-486e-8544-8035d71fbf39"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:20.000Z",
+                      "updatedAt": "2026-07-28T03:26:20.000Z",
+                      "uid": "35240-d585821b-258d-43c0-a324-f4da383ac882"
+                    }
+                  ],
+                  "id": "3d648ab6-b79c-4b48-89f5-c86a0129e7b8",
+                  "createdAt": "2026-07-28T03:26:20.000Z",
+                  "updatedAt": "2026-07-28T03:26:20.000Z",
+                  "uid": "35240-3d648ab6-b79c-4b48-89f5-c86a0129e7b8"
+                },
+                {
+                  "name": "addressBookEntries:unsignedBatchCreate",
+                  "item": [
+                    {
+                      "name": "BatchCreateUnsignedAddressBookEntries",
+                      "id": "da738a3e-155a-4c46-a1ef-4608a9cb79e0",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"requests\": [\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries:unsignedBatchCreate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "addressBookEntries:unsignedBatchCreate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8ff5bec3-af03-4ff8-b4a5-79c67967109f",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Batch creates address book entries without per-entry vault signatures (quorum approval only)."
+                      },
+                      "response": [
+                        {
+                          "id": "5642d540-0229-49cc-99c3-0cb411fbf46c",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"requests\": [\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries:unsignedBatchCreate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "addressBookEntries:unsignedBatchCreate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"vaultAction\": {\n    \"name\": \"<string>\",\n    \"status\": \"EXPIRED\",\n    \"createTime\": \"<dateTime>\",\n    \"expireTime\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:26:20.000Z",
+                          "updatedAt": "2026-07-28T03:26:20.000Z",
+                          "uid": "35240-5642d540-0229-49cc-99c3-0cb411fbf46c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:20.000Z",
+                      "updatedAt": "2026-07-28T03:26:20.000Z",
+                      "uid": "35240-da738a3e-155a-4c46-a1ef-4608a9cb79e0"
+                    }
+                  ],
+                  "id": "2f4d42e3-e905-4bed-8c04-8fd9be2b16cb",
+                  "createdAt": "2026-07-28T03:26:20.000Z",
+                  "updatedAt": "2026-07-28T03:26:20.000Z",
+                  "uid": "35240-2f4d42e3-e905-4bed-8c04-8fd9be2b16cb"
+                },
+                {
+                  "name": "addressBookEntries:batchAdd",
+                  "item": [
+                    {
+                      "name": "BatchAddAddressBookEntriesToGroup",
+                      "id": "518e7354-90de-49a5-a19e-1d1cb1f38a89",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"addressBookEntryGroup\": \"<string>\",\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries:batchAdd",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "vaults",
+                            ":vault_id",
+                            "addressBookEntries:batchAdd"
+                          ],
+                          "variable": [
+                            {
+                              "id": "909216bc-86e9-4031-b8d7-6d46ac6f790e",
+                              "key": "vault_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Batch add existing address book entries to an address book entry group.\nInitiates a quorum action."
+                      },
+                      "response": [
+                        {
+                          "id": "22b015b0-994a-4b76-8cd4-257d5da012b7",
+                          "name": "A successful response.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"addressBookEntryGroup\": \"<string>\",\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/vaults/:vault_id/addressBookEntries:batchAdd",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "vaults",
+                                ":vault_id",
+                                "addressBookEntries:batchAdd"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "vault_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"vaultAction\": {\n    \"name\": \"<string>\",\n    \"status\": \"EXPIRED\",\n    \"createTime\": \"<dateTime>\",\n    \"expireTime\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:26:20.000Z",
+                          "updatedAt": "2026-07-28T03:26:20.000Z",
+                          "uid": "35240-22b015b0-994a-4b76-8cd4-257d5da012b7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:20.000Z",
+                      "updatedAt": "2026-07-28T03:26:20.000Z",
+                      "uid": "35240-518e7354-90de-49a5-a19e-1d1cb1f38a89"
+                    }
+                  ],
+                  "id": "ee15417f-db2e-4297-8008-a951f001b02a",
+                  "createdAt": "2026-07-28T03:26:20.000Z",
+                  "updatedAt": "2026-07-28T03:26:20.000Z",
+                  "uid": "35240-ee15417f-db2e-4297-8008-a951f001b02a"
+                }
+              ],
+              "id": "dd44b033-7770-45d8-ac00-cbf01dabbc91",
+              "createdAt": "2026-07-28T03:26:20.000Z",
+              "updatedAt": "2026-07-28T03:26:20.000Z",
+              "uid": "35240-dd44b033-7770-45d8-ac00-cbf01dabbc91"
+            }
+          ],
+          "id": "c06e52ff-9ecc-4ac2-958d-357e9d329bfe",
+          "createdAt": "2026-07-28T03:26:20.000Z",
+          "updatedAt": "2026-07-28T03:26:20.000Z",
+          "uid": "35240-c06e52ff-9ecc-4ac2-958d-357e9d329bfe"
+        }
+      ],
+      "id": "97a92247-6989-43bd-ac99-13ff33061988",
+      "createdAt": "2026-07-28T03:26:20.000Z",
+      "updatedAt": "2026-07-28T03:26:20.000Z",
+      "uid": "35240-97a92247-6989-43bd-ac99-13ff33061988"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.utila.io"
+    }
+  ]
+}
