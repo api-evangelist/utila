@@ -136,6 +136,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/utila-v2-overlay.yaml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/utila/overview
 - type: Website
