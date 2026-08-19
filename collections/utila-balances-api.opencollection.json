@@ -1,0 +1,154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Utila Address Book Balances API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Balances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "QueryBalances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id:queryBalances",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a list of all asset balances in all wallets in a vault."
+        },
+        {
+          "info": {
+            "name": "QueryWalletBalances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id:queryBalances",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a list of all asset balances in a wallet. Can be used also to retrieve assets across all wallets as per\n[AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of wallet ID in the parent."
+        },
+        {
+          "info": {
+            "name": "QueryWalletAddressBalances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id/addresses/:address_id:queryBalances",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "address_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a list of all asset balances in a wallet address. Can be used also to retrieve assets across all wallet adresses of a wallet as per\n[AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of wallet address ID in the parent."
+        },
+        {
+          "info": {
+            "name": "RefreshAssetAddressBalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id:refreshAssetAddressBalance",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refreshes address balance for given address."
+        },
+        {
+          "info": {
+            "name": "QueryWalletUTXOs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id:queryUTXOs",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a list of all UTXOs in a wallet."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Utila Address Book Vaults API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vaults",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetVault",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a vault by resource name."
+        },
+        {
+          "info": {
+            "name": "ListVaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults",
+            "params": [
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like ordering specifications.\nSupports the fields `display_name` and `create_time`."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return. The service may return fewer than this value."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A page token, received from the previous list call as `nextPageToken`.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters must match the call that provided\nthe page token."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all vaults accessible to the authenticated user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

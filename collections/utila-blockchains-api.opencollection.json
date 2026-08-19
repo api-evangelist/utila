@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Utila Address Book Blockchains API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blockchains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetNetwork",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/networks/:network_id",
+            "params": [
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a Network by resource name."
+        },
+        {
+          "info": {
+            "name": "ListNetworks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/networks",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return. The service may return fewer than this value.\n\nNote: pagination is currently not supported."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A page token, received from the previous list call as `nextPageToken`.\n\nNote: pagination is currently not supported."
+              }
+            ]
+          },
+          "docs": "Returns the list of networks available for use.\n\nTo list custom EVM networks, use [ListVaultNetworks](#operation/Blockchains_ListVaultNetworks)"
+        },
+        {
+          "info": {
+            "name": "ListVaultNetworks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/networks",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Note: pagination is currently not supported."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A page token, received from the previous list call as `nextPageToken`.\n\nNote: pagination is currently not supported."
+              }
+            ]
+          },
+          "docs": "Returns the list of vault networks available for use."
+        },
+        {
+          "info": {
+            "name": "GetLatestBatchContract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/networks/:network_id/batchContracts/latest",
+            "params": [
+              {
+                "name": "network_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the latest BatchContract. Batch transfer of ERC20 tokens require a token approval for that contract."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

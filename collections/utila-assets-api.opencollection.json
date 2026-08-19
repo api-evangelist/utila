@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Utila Address Book Assets API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetAsset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/assets/:asset_id",
+            "params": [
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves an asset by resource name."
+        },
+        {
+          "info": {
+            "name": "BatchGetAssets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/assets:batchGet",
+            "params": [
+              {
+                "name": "names",
+                "value": "",
+                "type": "query",
+                "description": "Repeated resource names of the requested assets.\n\nFormat: `assets/{asset_id}`"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of assets by resource name."
+        },
+        {
+          "info": {
+            "name": "GetVaultAsset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/assets/:asset_id",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a vault scoped asset (imported token or custom chain token) by resource name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

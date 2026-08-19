@@ -1,0 +1,355 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Utila Address Book Transactions API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions/:transaction_id",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeReferencedResources",
+                "value": "",
+                "type": "query",
+                "description": "Include referenced resources in the response."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "The view of the transaction.\n\n - BASIC: The default view. Does not include certain fields such as blocking transactions.\n - FULL: Full view, include all fields."
+              }
+            ]
+          },
+          "docs": "Retrieves a transaction by resource name."
+        },
+        {
+          "info": {
+            "name": "BatchGetTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions:batchGet",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "names",
+                "value": "",
+                "type": "query",
+                "description": "The resource names of the transactions to retrieve.\n\nFormat: `vaults/{vault_id}/transactions/{transaction_id}`"
+              },
+              {
+                "name": "includeReferencedResources",
+                "value": "",
+                "type": "query",
+                "description": "Include referenced resources in the response."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "The view of the transaction.\n\n - BASIC: The default view. Does not include certain fields such as blocking transactions.\n - FULL: Full view, include all fields."
+              }
+            ]
+          },
+          "docs": "Retrieves multiple transactions by resource name."
+        },
+        {
+          "info": {
+            "name": "ListTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "A filter string to filter the results.\nMore details about filtering can be found in the [Filtering Documentation Page](https://docs.utila.io/reference/filtering).\n\nSupported fields and functions:\n| Name | Description | Example |\n|------|-------------|---------|\n| `create_time` | Filter by creation time (`string` comparison). | `create_time > \"2023-08-29T18:04:00Z\"` |\n| `state` | Filter by one or more states (`enum...`). | `state(AWAITING_APPROVAL,AWAITING_SIGNATURE)` |\n| `spam` | Filter by spam status (`bool`). | `spam(false)` |\n| `from_wallet` | Filter by one or more source wallets (`string...`). | `from_wallet(\"vaults/123456789012/wallets/5a8b8085ccd0\")` |\n| `to_wallet` | Filter by one or more destination wallets (`string...`). | `to_wallet(\"vaults/123456789012/wallets/5a8b8085ccd0\")` |\n| `pending_user_approval` | Filter by user for which the transaction is awaiting approval (`string`). | `pending_user_approval(\"users/name@example.com\")` |\n| `asset` | Filter by one or more assets (`string...`). Supports v2 asset aliases. | `asset(\"assets/erc20.ethereum-mainnet.0x6b175474e89094c44da98b954eedeac495271d0f\")` |\n| `external_id` | Filter by client-provided external ID (`string`). | `external_id(\"order-123\")` |"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like ordering specifications.\nSupports the field `create_time`."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return. The service may return fewer than\nthis value.\n\nIf unspecified, at most 50 will be returned."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A page token, received from the previous list call as `nextPageToken`.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters must match the call that provided\nthe page token."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases."
+              },
+              {
+                "name": "includeReferencedResources",
+                "value": "",
+                "type": "query",
+                "description": "Include referenced resources in the response."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "The view of the transaction.\n\n - BASIC: The default view. Does not include certain fields such as blocking transactions.\n - FULL: Full view, include all fields."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all transactions in a vault."
+        },
+        {
+          "info": {
+            "name": "InitiateTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions:initiate",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a new transaction."
+        },
+        {
+          "info": {
+            "name": "VoteOnTransactionRequest",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactionRequests/:transaction_request_id:vote",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transaction_request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Vote on a transaction request."
+        },
+        {
+          "info": {
+            "name": "EstimateTransactionFee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions:estimateFee",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Estimate the fee for a transaction."
+        },
+        {
+          "info": {
+            "name": "GetLatestTransactionSimulation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions/:transaction_id/simulations/latest",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeReferencedResources",
+                "value": "",
+                "type": "query",
+                "description": "Include referenced resources in the response."
+              }
+            ]
+          },
+          "docs": "GetLatestTransactionSimulation"
+        },
+        {
+          "info": {
+            "name": "CancelTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions/:transaction_id:cancel",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancels a transaction. Used to cancel a transaction before it is signed.\n\nOnly the transaction's initiator or an admin can cancel a transaction.\n\nIf the transaction has already been signed, use\n[ReplaceTransaction](#tag/Transactions/operation/Transactions_ReplaceTransaction) instead."
+        },
+        {
+          "info": {
+            "name": "ReplaceTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions/:transaction_id:replace",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new transaction that replaces an existing signed transaction in the system which has not been mined yet.\n\nOnly works for blockchains that support replacement of signed transactions, e.g.\n- Ethereum - which has nonce management.\n- BTC - which has RBF (Replace-By-Fee) and CPFP (Child-Pays-For-Parent) mechanisms.\n\nSome blockchains do not support transaction replacement, e.g. TRON - which is based on\ntransaction expiration time - for these cases, the transaction will be either mined or\nexp"
+        },
+        {
+          "info": {
+            "name": "PublishTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions/:transaction_id:publish",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Manually publishes a signed transaction to the blockchain. This endpoint synchronously\nbroadcasts the transaction to the network and returns the updated transaction details.\nThe transaction must be fully signed before publishing.\n\n**Note:** Currently only available for EVM-compatible blockchains. Support for additional\nblockchains will be added in future releases."
+        },
+        {
+          "info": {
+            "name": "GetTransactionAMLScreening",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/transactions/:transaction_id/amlScreening",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "If the transaction was screened for AML, this endpoint will return the results. Relevant where screening is configured."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

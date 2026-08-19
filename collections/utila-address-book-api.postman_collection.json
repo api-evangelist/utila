@@ -1,0 +1,668 @@
+{
+  "item": [
+    {
+      "id": "ae110c97-2fb9-41a6-86a9-4b7b0ad82286",
+      "name": "Address Book",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1bce6745-5d37-46ca-89b1-c5ca712b939e",
+          "name": "ListAddressBookEntries",
+          "request": {
+            "name": "ListAddressBookEntries",
+            "description": {
+              "content": "Retrieve a list of all address book entries in a vault.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "vaults",
+                ":vault_id",
+                "addressBookEntries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "The maximum number of address book entries to return.\nThe service may return fewer than this value.\nIf unspecified, at most 50 address book entries will be returned.\nThe maximum value is 1000; values above 1000 will be coerced to 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "A page token, received from a previous `ListAddressBookEntries` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `ListAddressBookEntries` must\nmatch the call that provided the page token."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "A filter expression that filters address book entries listed in the response.\n\nSupported fields and functions:\n| Name | Description | Example |\n|------|-------------|---------|\n| `network` | Filter by one or more networks (`string...`). | `network(\"networks/ethereum-mainnet\")` |\n| `address` | Filter by one or more addresses, case-insensitive (`string...`). | `address(\"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\")` |\n| `display_name` | Filter by one or more display names, exact match and case-sensitive, supports a maximum of 100 display names. (`string...`). | `display_name(\"Cold Storage\", \"My Wallet\")` |\n| `create_time` | Filter by creation time (`string` comparison). | `create_time > \"2023-08-29T18:04:00Z\"` |"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>",
+                  "description": "A comma-separated list of fields by which to order the results.\nValid fields are:\n  * `create_time`\n  * `display_name`\n  * `address`\n  * `network`\n\nThe default sorting order is ascending. To specify descending order for a field, a suffix ` desc` should be appended to the field name. For example: `create_time desc`.\n\nRedundant field names are collapsed. For example if one specifies `create_time desc, create_time`, the results will be sorted by `create_time desc` only.\n\nIf a field is not specified, the results will be sorted by the default sorting order."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vault_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f97fc5d4-45e6-47ef-9978-3c69d870bdd1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "vaults",
+                    ":vault_id",
+                    "addressBookEntries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vault_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addressBookEntries\": [\n    {\n      \"address\": \"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\",\n      \"displayName\": \"My DeFi Wallet\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"name\": \"vaults/1b25635a5b3f/addressBookEntries/95257c5a522f\",\n      \"note\": \"This is my main trading wallet\",\n      \"createTime\": \"2023-01-15T10:30:00Z\",\n      \"tracked\": false,\n      \"associatedExternalWallet\": \"vaults/1b25635a5b3f/wallets/95257c5a522f\",\n      \"creator\": \"users/1b25635a5b3f/users/95257c5a522f\",\n      \"signed\": true\n    },\n    {\n      \"address\": \"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\",\n      \"displayName\": \"My DeFi Wallet\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"name\": \"vaults/1b25635a5b3f/addressBookEntries/95257c5a522f\",\n      \"note\": \"This is my main trading wallet\",\n      \"createTime\": \"2023-01-15T10:30:00Z\",\n      \"tracked\": true,\n      \"associatedExternalWallet\": \"vaults/1b25635a5b3f/wallets/95257c5a522f\",\n      \"creator\": \"users/1b25635a5b3f/users/95257c5a522f\",\n      \"signed\": false\n    }\n  ],\n  \"nextPageToken\": \"next_page_token\",\n  \"totalSize\": 150\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbde8142-30a6-4c25-945a-3174e634a4e3",
+          "name": "BatchGetAddressBookEntries",
+          "request": {
+            "name": "BatchGetAddressBookEntries",
+            "description": {
+              "content": "Retrieve multiple address book entries by resource name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "vaults",
+                ":vault_id",
+                "addressBookEntries:batchGet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "names",
+                  "value": "<string>",
+                  "description": "(Required) The resource names of the address book entries to retrieve.\n\nFormat: `vaults/{vault_id}/addressBookEntries/{entry_id}`"
+                },
+                {
+                  "disabled": false,
+                  "key": "names",
+                  "value": "<string>",
+                  "description": "(Required) The resource names of the address book entries to retrieve.\n\nFormat: `vaults/{vault_id}/addressBookEntries/{entry_id}`"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vault_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09b0dfca-cb6e-4467-9887-962d2c3799b2",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "vaults",
+                    ":vault_id",
+                    "addressBookEntries:batchGet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "names",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vault_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addressBookEntries\": [\n    {\n      \"address\": \"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\",\n      \"displayName\": \"My DeFi Wallet\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"name\": \"vaults/1b25635a5b3f/addressBookEntries/95257c5a522f\",\n      \"note\": \"This is my main trading wallet\",\n      \"createTime\": \"2023-01-15T10:30:00Z\",\n      \"tracked\": false,\n      \"associatedExternalWallet\": \"vaults/1b25635a5b3f/wallets/95257c5a522f\",\n      \"creator\": \"users/1b25635a5b3f/users/95257c5a522f\",\n      \"signed\": false\n    },\n    {\n      \"address\": \"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\",\n      \"displayName\": \"My DeFi Wallet\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"name\": \"vaults/1b25635a5b3f/addressBookEntries/95257c5a522f\",\n      \"note\": \"This is my main trading wallet\",\n      \"createTime\": \"2023-01-15T10:30:00Z\",\n      \"tracked\": false,\n      \"associatedExternalWallet\": \"vaults/1b25635a5b3f/wallets/95257c5a522f\",\n      \"creator\": \"users/1b25635a5b3f/users/95257c5a522f\",\n      \"signed\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c282a7b-ab43-466a-8f37-09b0aeb1f758",
+          "name": "BatchCreateAddressBookEntries",
+          "request": {
+            "name": "BatchCreateAddressBookEntries",
+            "description": {
+              "content": "Batch creates address book entries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "vaults",
+                ":vault_id",
+                "addressBookEntries:batchCreate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vault_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a9b7b36e-583e-45f3-a468-37acefdc842c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "vaults",
+                    ":vault_id",
+                    "addressBookEntries:batchCreate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vault_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"address\": \"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\",\n      \"displayName\": \"John's deposit address\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"note\": \"This is John's deposit address \"\n    },\n    {\n      \"address\": \"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\",\n      \"displayName\": \"John's deposit address\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"note\": \"This is John's deposit address \"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vaultAction\": {\n    \"name\": \"string\",\n    \"status\": \"AWAITING_SIGNATURE\",\n    \"createTime\": \"1980-03-24T20:41:58.164Z\",\n    \"expireTime\": \"1991-12-09T05:38:45.983Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb58ce3b-e3e1-4762-b6af-6fc7797d7270",
+          "name": "BatchCreateUnsignedAddressBookEntries",
+          "request": {
+            "name": "BatchCreateUnsignedAddressBookEntries",
+            "description": {
+              "content": "Batch creates address book entries without per-entry vault signatures (quorum approval only).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "vaults",
+                ":vault_id",
+                "addressBookEntries:unsignedBatchCreate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vault_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"network\": \"<string>\",\n      \"note\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f50e1acc-a704-48ac-a52b-df947bf9dbfc",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "vaults",
+                    ":vault_id",
+                    "addressBookEntries:unsignedBatchCreate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vault_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"address\": \"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\",\n      \"displayName\": \"John's deposit address\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"note\": \"This is John's deposit address \"\n    },\n    {\n      \"address\": \"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\",\n      \"displayName\": \"John's deposit address\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"note\": \"This is John's deposit address \"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vaultAction\": {\n    \"name\": \"string\",\n    \"status\": \"AWAITING_SIGNATURE\",\n    \"createTime\": \"1980-03-24T20:41:58.164Z\",\n    \"expireTime\": \"1991-12-09T05:38:45.983Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed065d31-0039-45f2-a7ea-6dbcfb99c806",
+          "name": "BatchAddAddressBookEntriesToGroup",
+          "request": {
+            "name": "BatchAddAddressBookEntriesToGroup",
+            "description": {
+              "content": "Batch add existing address book entries to an address book entry group.\nInitiates a quorum action.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "vaults",
+                ":vault_id",
+                "addressBookEntries:batchAdd"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vault_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"addressBookEntryGroup\": \"<string>\",\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e2ceb1b-110e-496a-ad15-e09f13a83a3e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "vaults",
+                    ":vault_id",
+                    "addressBookEntries:batchAdd"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vault_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressBookEntryGroup\": \"vaults/1b25635a5b3f/addressBookEntryGroups/abc123\",\n  \"names\": [\n    \"vaults/1b25635a5b3f/addressBookEntries/95257c5a522f\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vaultAction\": {\n    \"name\": \"string\",\n    \"status\": \"AWAITING_SIGNATURE\",\n    \"createTime\": \"1980-03-24T20:41:58.164Z\",\n    \"expireTime\": \"1991-12-09T05:38:45.983Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.utila.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "60947ab3-a8d3-4cce-9d46-9a773ffd39c8",
+    "name": "Utila Address Book API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

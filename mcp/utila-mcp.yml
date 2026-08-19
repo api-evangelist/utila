@@ -2,8 +2,8 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/utila-v2-openapi-original.json
-notes: No official Utila-hosted MCP server was found. Candidate tool list derived
-  from the Utila API v2 OpenAPI operations (one tool per operationId).
+notes: No official Utila-hosted MCP server was found. Candidate tool list derived from the Utila API v2
+  OpenAPI operations (one tool per operationId).
 server:
   name: utila
   transport: http
@@ -71,3 +71,9 @@ tools:
 - name: list_address_book_entries
   description: Retrieve all address book entries in a vault
   source_operation: openapi/utila-v2-openapi-original.json#AddressBook_ListAddressBookEntries
+deployment:
+  mode: none
+  verified: derived
+  tools: 21
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Utila Address Book API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Address Book",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListAddressBookEntries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/addressBookEntries",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of address book entries to return.\nThe service may return fewer than this value.\nIf unspecified, at most 50 address book entries will be returned.\nThe maximum value is 1000; values above 1000 will be coerced to 1000."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A page token, received from a previous `ListAddressBookEntries` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `ListAddressBookEntries` must\nmatch the call that provided the page token."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "A filter expression that filters address book entries listed in the response.\n\nSupported fields and functions:\n| Name | Description | Example |\n|------|-------------|---------|\n| `network` | Filter by one or more networks (`string...`). | `network(\"networks/ethereum-mainnet\")` |\n| `address` | Filter by one or more addresses, case-insensitive (`string...`). | `address(\"0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6\")` |\n| `display_name` | Filter by one or more display names, exact match and case-sensitive, supports a maximum of 100 display names. (`string...`). | `display_name(\"Cold Storage\", \"My Wallet\")` |\n| `create_time` | Filter by creation time (`string` comparison). | `create_time > \"2023-08-29T18:04:00Z\"` |"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of fields by which to order the results.\nValid fields are:\n  * `create_time`\n  * `display_name`\n  * `address`\n  * `network`\n\nThe default sorting order is ascending. To specify descending order for a field, a suffix ` desc` should be appended to the field name. For example: `create_time desc`.\n\nRedundant field names are collapsed. For example if one specifies `create_time desc, create_time`, the results will be sorted by `create_time desc` only.\n\nIf a field is not specified, the results will be sorted by the default sorting order."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all address book entries in a vault."
+        },
+        {
+          "info": {
+            "name": "BatchGetAddressBookEntries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/addressBookEntries:batchGet",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "names",
+                "value": "",
+                "type": "query",
+                "description": "The resource names of the address book entries to retrieve.\n\nFormat: `vaults/{vault_id}/addressBookEntries/{entry_id}`"
+              }
+            ]
+          },
+          "docs": "Retrieve multiple address book entries by resource name."
+        },
+        {
+          "info": {
+            "name": "BatchCreateAddressBookEntries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/addressBookEntries:batchCreate",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch creates address book entries."
+        },
+        {
+          "info": {
+            "name": "BatchCreateUnsignedAddressBookEntries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/addressBookEntries:unsignedBatchCreate",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch creates address book entries without per-entry vault signatures (quorum approval only)."
+        },
+        {
+          "info": {
+            "name": "BatchAddAddressBookEntriesToGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/addressBookEntries:batchAdd",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch add existing address book entries to an address book entry group.\nInitiates a quorum action."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

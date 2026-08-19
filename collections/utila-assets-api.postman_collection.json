@@ -1,0 +1,357 @@
+{
+  "item": [
+    {
+      "id": "76ce177a-a07e-40ef-ba9a-a1b20afb6ccc",
+      "name": "Assets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27af7d90-d9ef-43a5-b4fb-4d75a78cf34c",
+          "name": "GetAsset",
+          "request": {
+            "name": "GetAsset",
+            "description": {
+              "content": "Retrieves an asset by resource name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets",
+                ":asset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9c31157-0ab3-487f-8850-83f8e1e4b0d6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets",
+                    ":asset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset\": {\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"network\": \"networks/ethereum-mainnet\",\n    \"type\": \"NATIVE_CURRENCY\",\n    \"symbol\": \"string\",\n    \"decimals\": 3060,\n    \"convertedValue\": {\n      \"amount\": \"string\",\n      \"currencyCode\": \"string\"\n    },\n    \"tokenInfo\": {\n      \"contractAddress\": \"string\",\n      \"standard\": \"ERC20\",\n      \"denom\": \"string\",\n      \"cantonTokenDetails\": {\n        \"instrumentId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"instrumentAdmin\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"tip20Currency\": \"string\",\n      \"suiTokenDetails\": {\n        \"gasless\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02aa601c-3ef0-4795-9f07-dd9df87a911a",
+          "name": "BatchGetAssets",
+          "request": {
+            "name": "BatchGetAssets",
+            "description": {
+              "content": "Retrieves a list of assets by resource name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "assets:batchGet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "names",
+                  "value": "<string>",
+                  "description": "(Required) Repeated resource names of the requested assets.\n\nFormat: `assets/{asset_id}`"
+                },
+                {
+                  "disabled": false,
+                  "key": "names",
+                  "value": "<string>",
+                  "description": "(Required) Repeated resource names of the requested assets.\n\nFormat: `assets/{asset_id}`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7218384-50ea-46d9-98f5-e25c505c8164",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "assets:batchGet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "names",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "names",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": [\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"type\": \"TOKEN\",\n      \"symbol\": \"string\",\n      \"decimals\": 6371,\n      \"convertedValue\": {\n        \"amount\": \"string\",\n        \"currencyCode\": \"string\"\n      },\n      \"tokenInfo\": {\n        \"contractAddress\": \"string\",\n        \"standard\": \"JETTON\",\n        \"denom\": \"string\",\n        \"cantonTokenDetails\": {\n          \"instrumentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"instrumentAdmin\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"tip20Currency\": \"string\",\n        \"suiTokenDetails\": {\n          \"gasless\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"network\": \"networks/ethereum-mainnet\",\n      \"type\": \"TOKEN\",\n      \"symbol\": \"string\",\n      \"decimals\": 2078,\n      \"convertedValue\": {\n        \"amount\": \"string\",\n        \"currencyCode\": \"string\"\n      },\n      \"tokenInfo\": {\n        \"contractAddress\": \"string\",\n        \"standard\": \"ERC1155\",\n        \"denom\": \"string\",\n        \"cantonTokenDetails\": {\n          \"instrumentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"instrumentAdmin\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"tip20Currency\": \"string\",\n        \"suiTokenDetails\": {\n          \"gasless\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8162b9d-3bec-4293-b4a1-a526bdba3a73",
+          "name": "GetVaultAsset",
+          "request": {
+            "name": "GetVaultAsset",
+            "description": {
+              "content": "Retrieves a vault scoped asset (imported token or custom chain token) by resource name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "vaults",
+                ":vault_id",
+                "assets",
+                ":asset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vault_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d746038a-245b-4d0b-ab2e-7453de0d2fc4",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "vaults",
+                    ":vault_id",
+                    "assets",
+                    ":asset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vault_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset\": {\n    \"name\": \"string\",\n    \"displayName\": \"string\",\n    \"network\": \"networks/ethereum-mainnet\",\n    \"type\": \"NATIVE_CURRENCY\",\n    \"symbol\": \"string\",\n    \"decimals\": 3060,\n    \"convertedValue\": {\n      \"amount\": \"string\",\n      \"currencyCode\": \"string\"\n    },\n    \"tokenInfo\": {\n      \"contractAddress\": \"string\",\n      \"standard\": \"ERC20\",\n      \"denom\": \"string\",\n      \"cantonTokenDetails\": {\n        \"instrumentId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"instrumentAdmin\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"tip20Currency\": \"string\",\n      \"suiTokenDetails\": {\n        \"gasless\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.utila.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e5918129-c246-47bd-86fa-4a5a624a3912",
+    "name": "Utila Address Book Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

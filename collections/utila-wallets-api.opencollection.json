@@ -1,0 +1,400 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Utila Address Book Wallets API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListWallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the converted value (`wallet.converted_value`) in the response.\n\n - BASIC: The default view. Does not include the converted value.\n - FULL: Calculate and include the converted value and additional fields."
+              },
+              {
+                "name": "showArchived",
+                "value": "",
+                "type": "query",
+                "description": "Optional. When true, archived wallets are included together with non-archived wallets.\nWhen false or omitted, only non-archived wallets are returned."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter results using EBNF syntax.\n\nSupported fields:\n* `displayName` (with regex support)\n* `createTime`\n* `external`\n\nSupported functions:\n* `wallet_archived()` - matches archived wallets. Takes no arguments.\n  Use together with `show_archived` to get only archived wallets.\n\nExamples:\n- `displayName = \"My Wallet\"` (All wallets with the display name \"My Wallet\")\n- `regex(displayName, \"^My \")` (All wallets with names starting with \"My \")\n- `regex(displayName, \"(?i)^mY \")` (All wallets with names starting with \"My \", case insensitive)\n- `external`, `-external`, `NOT external`\n- `createTime > \"2023-08-29T18:04:00Z\"`\n- `createTime > \"2023-08-29T18:04:00Z\" AND displayName = \"My Wallet\"`\n- `wallet_archived()` (Archived wallets only; set `show_archived` so archived wallets are returned)"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "SQL-like ordering specifications.\nSupports the fields\n* `display_name`\n* `create_time`\n* `update_time`\n* `converted_value.amount` (available through the FULL view)."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return. The service may return fewer than\nthis value.\n\nIf unspecified, at most 50 will be returned.\nThe maximum value is 1000; values above 1000 will be coerced to 1000."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A page token, received from the previous list call as `nextPageToken`.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters must match the call that provided\nthe page token."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases."
+              },
+              {
+                "name": "includeReferencedResources",
+                "value": "",
+                "type": "query",
+                "description": "Include referenced resources in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all wallets in a vault."
+        },
+        {
+          "info": {
+            "name": "CreateWallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new wallet."
+        },
+        {
+          "info": {
+            "name": "GetWallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the converted value (`wallet.converted_value`) in the response.\n\n - BASIC: The default view. Does not include the converted value.\n - FULL: Calculate and include the converted value and additional fields."
+              },
+              {
+                "name": "includeReferencedResources",
+                "value": "",
+                "type": "query",
+                "description": "Include referenced resources in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a wallet by resource name."
+        },
+        {
+          "info": {
+            "name": "BatchGetWallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets:batchGet",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "names",
+                "value": "",
+                "type": "query",
+                "description": "The resource names of the wallets to retrieve.\n\nFormat: `vaults/{vault_id}/wallets/{wallet_id}`"
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include the converted value (`wallet.converted_value`) in the response.\n\n - BASIC: The default view. Does not include the converted value.\n - FULL: Calculate and include the converted value and additional fields."
+              }
+            ]
+          },
+          "docs": "Retrieve multiple wallets by resource name."
+        },
+        {
+          "info": {
+            "name": "ArchiveWallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id:archive",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Archive a wallet."
+        },
+        {
+          "info": {
+            "name": "BatchArchiveWallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets:batchArchive",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Archive multiple wallets."
+        },
+        {
+          "info": {
+            "name": "UnarchiveWallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id:unarchive",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unarchive a wallet."
+        },
+        {
+          "info": {
+            "name": "BatchUnarchiveWallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets:batchUnarchive",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unarchive multiple wallets."
+        },
+        {
+          "info": {
+            "name": "ListWalletAddresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id/addresses",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return. The service may return fewer than this value.\n\nIf unspecified, at most 50 will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "A page token, received from the previous list call as `nextPageToken`."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "How many results to skip.\n\nNote: may be used alongside token-based pagination (see `pageToken`),\nalthough this won't be needed for most use cases."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all wallet addresses of a specific wallet."
+        },
+        {
+          "info": {
+            "name": "CreateWalletAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id/addresses",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a new address in a wallet for the specificied blockchain network.\n\nThe address is derived from the appropriate MPC key that is used by that blockchain,\ni.e. ECDSA for Bitcoin and Ethereum, and EdDSA for Solana.\nThe MPC key will be selected automatically for you. If a key is not available,\nan error will be returned.\n\nCurrently, creation of multiple addresses is supported only for UTXO-based blockchains.\n\nAddresses in the EVM protocol family (Ethereum, Binance Smart Chain, etc.) generate"
+        },
+        {
+          "info": {
+            "name": "GetWalletAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id/addresses/:address_id",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "address_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a wallet address by resource name."
+        },
+        {
+          "info": {
+            "name": "BatchGetWalletAddresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.utila.io/v2/vaults/:vault_id/wallets/:wallet_id/addresses:batchGet",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "names",
+                "value": "",
+                "type": "query",
+                "description": "The resource names of the wallet addresses to retrieve.\n\nFormat: `vaults/{vault_id}/wallets/{wallet_id}/addresses/{address_id}`"
+              }
+            ]
+          },
+          "docs": "Retrieve multiple wallet addresses by resource name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
