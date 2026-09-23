@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: Utila Address Book API
   version: v2
@@ -196,37 +196,14 @@ paths:
       - Address Book
 components:
   schemas:
-    AddressBookBatchCreateUnsignedAddressBookEntriesBody:
-      type: object
-      properties:
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2CreateAddressBookEntryRequest'
-          description: The individual create requests for each address book entry.
-      required:
-      - requests
-    v2ListAddressBookEntriesResponse:
+    v2BatchGetAddressBookEntriesResponse:
       type: object
       properties:
         addressBookEntries:
           type: array
           items:
             $ref: '#/components/schemas/v2AddressBookEntry'
-          description: The list of address book entries.
-          readOnly: true
-        nextPageToken:
-          type: string
-          example: next_page_token
-          description: 'A token, which can be sent as `page_token` to retrieve the next page.
-
-            If this field is omitted, there are no subsequent pages.'
-          readOnly: true
-        totalSize:
-          type: integer
-          format: int32
-          example: 150
-          description: The total number of address book entries that match the request criteria.
+          description: The requested address book entries.
           readOnly: true
     v2AddressBookEntry:
       type: object
@@ -296,33 +273,6 @@ components:
       - address
       - displayName
       - network
-    v2BatchAddAddressBookEntriesToGroupResponse:
-      type: object
-      properties:
-        vaultAction:
-          description: The vault action representing the quorum action.
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/v2VaultAction'
-    v2BatchGetAddressBookEntriesResponse:
-      type: object
-      properties:
-        addressBookEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2AddressBookEntry'
-          description: The requested address book entries.
-          readOnly: true
-    AddressBookBatchCreateAddressBookEntriesBody:
-      type: object
-      properties:
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2CreateAddressBookEntryRequest'
-          description: The individual create requests for each address book entry.
-      required:
-      - requests
     v2CreateAddressBookEntryRequest:
       type: object
       properties:
@@ -350,7 +300,17 @@ components:
       - address
       - displayName
       - network
-    v2BatchCreateUnsignedAddressBookEntriesResponse:
+    AddressBookBatchCreateAddressBookEntriesBody:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2CreateAddressBookEntryRequest'
+          description: The individual create requests for each address book entry.
+      required:
+      - requests
+    v2BatchCreateAddressBookEntriesResponse:
       type: object
       properties:
         vaultAction:
@@ -358,7 +318,7 @@ components:
           readOnly: true
           allOf:
           - $ref: '#/components/schemas/v2VaultAction'
-    v2BatchCreateAddressBookEntriesResponse:
+    v2BatchCreateUnsignedAddressBookEntriesResponse:
       type: object
       properties:
         vaultAction:
@@ -377,31 +337,6 @@ components:
       - FAILED
       - CANCELED
       - EXPIRED
-    AddressBookBatchAddAddressBookEntriesToGroupBody:
-      type: object
-      properties:
-        addressBookEntryGroup:
-          type: string
-          example: vaults/1b25635a5b3f/addressBookEntryGroups/abc123
-          description: 'The resource name of the address book entry group that the entries should be
-
-            added to.
-
-
-            Format: `vaults/{vault_id}/addressBookEntryGroups/{group_id}`'
-        names:
-          type: array
-          example:
-          - vaults/1b25635a5b3f/addressBookEntries/95257c5a522f
-          items:
-            type: string
-          description: 'The resource names of the address book entries to add to the group.
-
-
-            Format: `vaults/{vault_id}/addressBookEntries/{entry_id}`'
-      required:
-      - addressBookEntryGroup
-      - names
     v2VaultAction:
       type: object
       properties:
@@ -427,6 +362,71 @@ components:
           format: date-time
           description: Expiration timestamp.
           readOnly: true
+    AddressBookBatchCreateUnsignedAddressBookEntriesBody:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2CreateAddressBookEntryRequest'
+          description: The individual create requests for each address book entry.
+      required:
+      - requests
+    AddressBookBatchAddAddressBookEntriesToGroupBody:
+      type: object
+      properties:
+        addressBookEntryGroup:
+          type: string
+          example: vaults/1b25635a5b3f/addressBookEntryGroups/abc123
+          description: 'The resource name of the address book entry group that the entries should be
+
+            added to.
+
+
+            Format: `vaults/{vault_id}/addressBookEntryGroups/{group_id}`'
+        names:
+          type: array
+          example:
+          - vaults/1b25635a5b3f/addressBookEntries/95257c5a522f
+          items:
+            type: string
+          description: 'The resource names of the address book entries to add to the group.
+
+
+            Format: `vaults/{vault_id}/addressBookEntries/{entry_id}`'
+      required:
+      - addressBookEntryGroup
+      - names
+    v2ListAddressBookEntriesResponse:
+      type: object
+      properties:
+        addressBookEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2AddressBookEntry'
+          description: The list of address book entries.
+          readOnly: true
+        nextPageToken:
+          type: string
+          example: next_page_token
+          description: 'A token, which can be sent as `page_token` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+          readOnly: true
+        totalSize:
+          type: integer
+          format: int32
+          example: 150
+          description: The total number of address book entries that match the request criteria.
+          readOnly: true
+    v2BatchAddAddressBookEntriesToGroupResponse:
+      type: object
+      properties:
+        vaultAction:
+          description: The vault action representing the quorum action.
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/v2VaultAction'
   securitySchemes:
     bearerAuth:
       type: http

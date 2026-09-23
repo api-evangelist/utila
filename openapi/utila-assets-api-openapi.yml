@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Utila Address Book Assets API
+  title: Utila Assets API
   version: v2
 servers:
 - url: https://api.utila.io
@@ -83,6 +83,19 @@ paths:
       - Assets
 components:
   schemas:
+    AssetTokenInfoStandardEnum:
+      type: string
+      enum:
+      - ERC20
+      - ERC721
+      - ERC1155
+      - TRC20
+      - SPL_TOKEN
+      - SPL_TOKEN_2022
+      - ICS20
+      - JETTON
+      - TIP20
+      description: " - ERC20: ERC20 is the most common fungible token standard.\n - ERC721: ERC721 is the most common non-fungible token standard.\n - ERC1155: ERC1155 is a newer token standard that allows for multiple tokens to be\nheld in a single contract.\n - TRC20: TRC20 is the most common tron's fungible token standard.\n - SPL_TOKEN: SPL Token - solana's token standard.\n - SPL_TOKEN_2022: Token2020 - solana's new token extension for spl tokens.\n - ICS20: ICS20 cosmos's token standard.\n - JETTON: JETTON TON's token standard.\n - TIP20: TIP20 is the Tempo blockchain token standard (ERC-20 extension with compliance features)."
     v2CantonTokenDetails:
       type: object
       properties:
@@ -92,44 +105,6 @@ components:
         instrumentAdmin:
           type: string
           description: The instrument admin.
-    v2ConvertedValue:
-      type: object
-      properties:
-        amount:
-          type: string
-          description: The amount in USD.
-          readOnly: true
-        currencyCode:
-          type: string
-          description: The currency code of the amount. Always USD.
-          readOnly: true
-      description: A message representing a converted value.
-    v2AssetTypeEnum:
-      type: string
-      enum:
-      - NATIVE_CURRENCY
-      - TOKEN
-      description: "The type of the asset.\n\n - NATIVE_CURRENCY: The asset is a native currency.\n - TOKEN: The asset is a token."
-    v2BatchGetAssetsResponse:
-      type: object
-      properties:
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2Asset'
-          description: The assets returned.
-    v2GetVaultAssetResponse:
-      type: object
-      properties:
-        asset:
-          description: The asset returned.
-          allOf:
-          - $ref: '#/components/schemas/v2Asset'
-    v2SuiTokenDetails:
-      type: object
-      properties:
-        gasless:
-          type: boolean
     v2GetAssetResponse:
       type: object
       properties:
@@ -137,6 +112,36 @@ components:
           description: The asset returned.
           allOf:
           - $ref: '#/components/schemas/v2Asset'
+    v2AssetTypeEnum:
+      type: string
+      enum:
+      - NATIVE_CURRENCY
+      - TOKEN
+      description: "The type of the asset.\n\n - NATIVE_CURRENCY: The asset is a native currency.\n - TOKEN: The asset is a token."
+    v2AssetTokenInfo:
+      type: object
+      properties:
+        contractAddress:
+          type: string
+          description: The contract address of the token.
+        standard:
+          description: The token standard.
+          allOf:
+          - $ref: '#/components/schemas/AssetTokenInfoStandardEnum'
+        denom:
+          type: string
+          description: The denom of the token on cosmos ecosystem.
+        cantonTokenDetails:
+          title: Canton token details
+          allOf:
+          - $ref: '#/components/schemas/v2CantonTokenDetails'
+        tip20Currency:
+          type: string
+          description: ISO 4217 currency code for TIP-20 tokens (e.g. "USD", "EUR"). Empty for other standards.
+        suiTokenDetails:
+          description: Sui token details. Present only for gasless-eligible Sui assets.
+          allOf:
+          - $ref: '#/components/schemas/v2SuiTokenDetails'
     v2Asset:
       type: object
       properties:
@@ -186,43 +191,38 @@ components:
             Only present if the asset is a token.'
           allOf:
           - $ref: '#/components/schemas/v2AssetTokenInfo'
-    AssetTokenInfoStandardEnum:
-      type: string
-      enum:
-      - ERC20
-      - ERC721
-      - ERC1155
-      - TRC20
-      - SPL_TOKEN
-      - SPL_TOKEN_2022
-      - ICS20
-      - JETTON
-      - TIP20
-      description: " - ERC20: ERC20 is the most common fungible token standard.\n - ERC721: ERC721 is the most common non-fungible token standard.\n - ERC1155: ERC1155 is a newer token standard that allows for multiple tokens to be\nheld in a single contract.\n - TRC20: TRC20 is the most common tron's fungible token standard.\n - SPL_TOKEN: SPL Token - solana's token standard.\n - SPL_TOKEN_2022: Token2020 - solana's new token extension for spl tokens.\n - ICS20: ICS20 cosmos's token standard.\n - JETTON: JETTON TON's token standard.\n - TIP20: TIP20 is the Tempo blockchain token standard (ERC-20 extension with compliance features)."
-    v2AssetTokenInfo:
+    v2SuiTokenDetails:
       type: object
       properties:
-        contractAddress:
-          type: string
-          description: The contract address of the token.
-        standard:
-          description: The token standard.
+        gasless:
+          type: boolean
+    v2BatchGetAssetsResponse:
+      type: object
+      properties:
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2Asset'
+          description: The assets returned.
+    v2GetVaultAssetResponse:
+      type: object
+      properties:
+        asset:
+          description: The asset returned.
           allOf:
-          - $ref: '#/components/schemas/AssetTokenInfoStandardEnum'
-        denom:
+          - $ref: '#/components/schemas/v2Asset'
+    v2ConvertedValue:
+      type: object
+      properties:
+        amount:
           type: string
-          description: The denom of the token on cosmos ecosystem.
-        cantonTokenDetails:
-          title: Canton token details
-          allOf:
-          - $ref: '#/components/schemas/v2CantonTokenDetails'
-        tip20Currency:
+          description: The amount in USD.
+          readOnly: true
+        currencyCode:
           type: string
-          description: ISO 4217 currency code for TIP-20 tokens (e.g. "USD", "EUR"). Empty for other standards.
-        suiTokenDetails:
-          description: Sui token details. Present only for gasless-eligible Sui assets.
-          allOf:
-          - $ref: '#/components/schemas/v2SuiTokenDetails'
+          description: The currency code of the amount. Always USD.
+          readOnly: true
+      description: A message representing a converted value.
   securitySchemes:
     bearerAuth:
       type: http

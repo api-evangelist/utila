@@ -1,13 +1,7 @@
 {
   "provider": "utila",
   "sources": [
-    "utila-address-book-api-openapi.yml",
-    "utila-assets-api-openapi.yml",
-    "utila-balances-api-openapi.yml",
-    "utila-blockchains-api-openapi.yml",
-    "utila-transactions-api-openapi.yml",
-    "utila-vaults-api-openapi.yml",
-    "utila-wallets-api-openapi.yml"
+    "_original/utila-v2-openapi-original.json"
   ],
   "outputs": [
     "utila-address-book-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "utila-v2-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "utila-address-book-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "utila-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "utila-balances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "utila-blockchains-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "utila-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "utila-vaults-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "utila-wallets-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

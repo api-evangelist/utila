@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Utila Address Book Blockchains API
+  title: Utila Blockchains API
   version: v2
 servers:
 - url: https://api.utila.io
@@ -35,7 +35,7 @@ paths:
       description: 'Returns the list of networks available for use.
 
 
-        To list custom EVM networks, use [ListVaultNetworks](#operation/Blockchains_ListVaultNetworks)'
+        To list custom EVM networks, use ListVaultNetworks'
       operationId: Blockchains_ListNetworks
       responses:
         '200':
@@ -152,13 +152,21 @@ components:
 
             Format: `[-_a-zA-Z0-9]{1,32}`'
       description: Chain-Agnostic Identifiers (CAIP) details for this network.
-    v2GetNetworkResponse:
+    v2BatchContract:
       type: object
       properties:
+        name:
+          type: string
+          example: networks/ethereum-mainnet/0x1234...
+          description: The resource name of the batch contract.
         network:
-          description: The network.
-          allOf:
-          - $ref: '#/components/schemas/v2Network'
+          type: string
+          example: networks/ethereum-mainnet
+          description: The network of the batch contract.
+        address:
+          type: string
+          example: 0x1234...
+          description: The address of the batch contract.
     v2Network:
       type: object
       properties:
@@ -217,6 +225,13 @@ components:
       - ACTIVE
       - DISABLED
       - DEPRECATED
+    v2GetNetworkResponse:
+      type: object
+      properties:
+        network:
+          description: The network.
+          allOf:
+          - $ref: '#/components/schemas/v2Network'
     v2ListVaultNetworksResponse:
       type: object
       properties:
@@ -230,21 +245,6 @@ components:
           description: 'A token, which can be sent as `pageToken` to retrieve the next page.
 
             If this field is omitted, there are no subsequent pages.'
-    v2BatchContract:
-      type: object
-      properties:
-        name:
-          type: string
-          example: networks/ethereum-mainnet/0x1234...
-          description: The resource name of the batch contract.
-        network:
-          type: string
-          example: networks/ethereum-mainnet
-          description: The network of the batch contract.
-        address:
-          type: string
-          example: 0x1234...
-          description: The address of the batch contract.
   securitySchemes:
     bearerAuth:
       type: http
