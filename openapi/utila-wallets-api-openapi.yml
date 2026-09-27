@@ -516,163 +516,6 @@ components:
         allowMissing:
           type: boolean
           description: If set to true, the operation will not fail if the wallet is missing.
-    WalletAddressFormat:
-      type: string
-      enum:
-      - BITCOIN_P2PKH
-      - BITCOIN_P2WPKH
-      - EVM
-      - TRON_BASE58
-      - BASE58
-      - TON_NON_BOUNCEABLE
-      - SUBSTRATE_58
-      - BITCOIN_P2TR
-      description: " - BITCOIN_P2PKH: Bitcoin P2PKH address format.\n - BITCOIN_P2WPKH: Bitcoin P2WPKH address format.\n - EVM: Ethereum address format.\n - TRON_BASE58: Tron base58 address format.\n - BASE58: Solana address format.\n - TON_NON_BOUNCEABLE: Ton address format.\n - SUBSTRATE_58: Substrate address format.\n - BITCOIN_P2TR: Bitcoin P2TR (Taproot, BIP-341) address format."
-    WalletSolanaDetails:
-      type: object
-      properties:
-        address:
-          type: string
-          description: The address of the wallet.
-          readOnly: true
-    v2WalletBTCDetailsBTCNetworkDetails:
-      type: object
-      properties:
-        network:
-          type: string
-          example: networks/bitcoin-mainnet
-          description: A specific btc network of the wallet.
-          readOnly: true
-        mainAddress:
-          type: string
-          description: The main deposit address of the wallet in the network.
-          readOnly: true
-        xpub:
-          type: string
-          description: The xpub of the wallet in the network. Included only when `FULL` view is requested.
-          readOnly: true
-    v2WalletTonDetails:
-      type: object
-      properties:
-        address:
-          type: string
-          description: The address of the wallet.
-          readOnly: true
-    WalletCreateParams:
-      type: object
-      properties:
-        walletGroups:
-          type: array
-          example:
-          - vaults/1b25635a5b3f/walletGroups/95257c5a522f
-          items:
-            type: string
-          description: 'Wallet will be assigned to these wallet groups upon creation.
-
-            Each group must support assignment of empty wallets on creation in the dedicated group setting.
-
-
-            Format: `vaults/{vault_id}/walletGroups/{wallet_group_id}`.'
-      description: Parameters only used during wallet creation.
-    WalletsBatchArchiveWalletsBody:
-      type: object
-      properties:
-        names:
-          type: array
-          items:
-            type: string
-          description: 'The resource names of the wallets to archive.
-
-            A maximum of 1000 wallets can be archived in a batch.
-
-
-            Format: `vaults/{vault_id}/wallets/{wallet_id}`'
-        allowMissing:
-          type: boolean
-          description: If set to true, the operation will not fail if any of the wallets are missing.
-      required:
-      - names
-    v2CreateWalletResponse:
-      type: object
-      properties:
-        wallet:
-          description: The created wallet resource.
-          allOf:
-          - $ref: '#/components/schemas/v2Wallet'
-    v2CreateWalletAddressResponse:
-      type: object
-      properties:
-        walletAddress:
-          $ref: '#/components/schemas/v2WalletAddress'
-    v2BatchGetWalletAddressesResponse:
-      type: object
-      properties:
-        walletAddresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2WalletAddress'
-          description: The wallet addresses retrieved.
-    v2WalletAddressType:
-      type: string
-      enum:
-      - MAIN
-      - DEPOSIT
-      - CHANGE
-      description: " - MAIN: Main address (main address of the wallet).\n - DEPOSIT: Deposit address.\n - CHANGE: Change address."
-    WalletsBatchUnarchiveWalletsBody:
-      type: object
-      properties:
-        names:
-          type: array
-          items:
-            type: string
-          description: 'The resource names of the wallets to unarchive.
-
-            A maximum of 1000 wallets can be unarchived in a batch.
-
-
-            Format: `vaults/{vault_id}/wallets/{wallet_id}`'
-        allowMissing:
-          type: boolean
-          description: If set to true, the operation will not fail if any of the wallets are missing.
-      required:
-      - names
-    v2ListWalletAddressesResponse:
-      type: object
-      properties:
-        walletAddresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2WalletAddress'
-          description: The addresses returned.
-        nextPageToken:
-          type: string
-          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
-
-            If this field is omitted, there are no subsequent pages.'
-        totalSize:
-          type: integer
-          format: int32
-          description: Total number of items in the response, regardless of pagination.
-      description: The response message for ListAddresses.
-    WalletsUnarchiveWalletBody:
-      type: object
-      properties:
-        allowMissing:
-          type: boolean
-          description: If set to true, the operation will not fail if the wallet is missing.
-    v2GetWalletAddressResponse:
-      type: object
-      properties:
-        walletAddress:
-          $ref: '#/components/schemas/v2WalletAddress'
-    v2GetWalletResponse:
-      type: object
-      properties:
-        wallet:
-          description: The wallet resource.
-          allOf:
-          - $ref: '#/components/schemas/v2Wallet'
     v2WalletAddress:
       type: object
       properties:
@@ -743,6 +586,81 @@ components:
           title: note
       required:
       - network
+    v2GetWalletAddressResponse:
+      type: object
+      properties:
+        walletAddress:
+          $ref: '#/components/schemas/v2WalletAddress'
+    WalletsBatchUnarchiveWalletsBody:
+      type: object
+      properties:
+        names:
+          type: array
+          items:
+            type: string
+          description: 'The resource names of the wallets to unarchive.
+
+            A maximum of 1000 wallets can be unarchived in a batch.
+
+
+            Format: `vaults/{vault_id}/wallets/{wallet_id}`'
+        allowMissing:
+          type: boolean
+          description: If set to true, the operation will not fail if any of the wallets are missing.
+      required:
+      - names
+    v2BatchGetWalletAddressesResponse:
+      type: object
+      properties:
+        walletAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2WalletAddress'
+          description: The wallet addresses retrieved.
+    v2GetWalletResponse:
+      type: object
+      properties:
+        wallet:
+          description: The wallet resource.
+          allOf:
+          - $ref: '#/components/schemas/v2Wallet'
+    WalletAddressFormat:
+      type: string
+      enum:
+      - BITCOIN_P2PKH
+      - BITCOIN_P2WPKH
+      - EVM
+      - TRON_BASE58
+      - BASE58
+      - TON_NON_BOUNCEABLE
+      - SUBSTRATE_58
+      - BITCOIN_P2TR
+      description: " - BITCOIN_P2PKH: Bitcoin P2PKH address format.\n - BITCOIN_P2WPKH: Bitcoin P2WPKH address format.\n - EVM: Ethereum address format.\n - TRON_BASE58: Tron base58 address format.\n - BASE58: Solana address format.\n - TON_NON_BOUNCEABLE: Ton address format.\n - SUBSTRATE_58: Substrate address format.\n - BITCOIN_P2TR: Bitcoin P2TR (Taproot, BIP-341) address format."
+    v2CreateWalletResponse:
+      type: object
+      properties:
+        wallet:
+          description: The created wallet resource.
+          allOf:
+          - $ref: '#/components/schemas/v2Wallet'
+    v2WalletTonDetails:
+      type: object
+      properties:
+        address:
+          type: string
+          description: The address of the wallet.
+          readOnly: true
+    WalletXRPLDetails:
+      type: object
+      properties:
+        signingPubKey:
+          type: string
+          example: ED5F5AC8B98974A3CA843326D9B88CEBD0560177B973EE0B149F782CFAA06DC66A
+          description: 'The public key of the wallet, hex-encoded as expected by XRPL.
+
+
+            For ed25519 keys this starts with `ED`.'
+          readOnly: true
     v2Wallet:
       type: object
       properties:
@@ -835,14 +753,31 @@ components:
       required:
       - displayName
       - networks
-    v2BatchGetWalletsResponse:
+    WalletTronDetails:
       type: object
       properties:
-        wallets:
+        address:
+          type: string
+          description: The address of the wallet.
+          readOnly: true
+    WalletsBatchArchiveWalletsBody:
+      type: object
+      properties:
+        names:
           type: array
           items:
-            $ref: '#/components/schemas/v2Wallet'
-          description: The wallets retrieved.
+            type: string
+          description: 'The resource names of the wallets to archive.
+
+            A maximum of 1000 wallets can be archived in a batch.
+
+
+            Format: `vaults/{vault_id}/wallets/{wallet_id}`'
+        allowMissing:
+          type: boolean
+          description: If set to true, the operation will not fail if any of the wallets are missing.
+      required:
+      - names
     v2WalletBTCDetails:
       type: object
       properties:
@@ -851,17 +786,80 @@ components:
           items:
             $ref: '#/components/schemas/v2WalletBTCDetailsBTCNetworkDetails'
           readOnly: true
-    WalletXRPLDetails:
+    v2BatchGetWalletsResponse:
       type: object
       properties:
-        signingPubKey:
+        wallets:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2Wallet'
+          description: The wallets retrieved.
+    v2WalletEVMDetails:
+      type: object
+      properties:
+        address:
           type: string
-          example: ED5F5AC8B98974A3CA843326D9B88CEBD0560177B973EE0B149F782CFAA06DC66A
-          description: 'The public key of the wallet, hex-encoded as expected by XRPL.
-
-
-            For ed25519 keys this starts with `ED`.'
+          description: The address of the wallet.
           readOnly: true
+    v2WalletAddressType:
+      type: string
+      enum:
+      - MAIN
+      - DEPOSIT
+      - CHANGE
+      description: " - MAIN: Main address (main address of the wallet).\n - DEPOSIT: Deposit address.\n - CHANGE: Change address."
+    v2CreateWalletAddressResponse:
+      type: object
+      properties:
+        walletAddress:
+          $ref: '#/components/schemas/v2WalletAddress'
+    v2ListWalletAddressesResponse:
+      type: object
+      properties:
+        walletAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2WalletAddress'
+          description: The addresses returned.
+        nextPageToken:
+          type: string
+          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+        totalSize:
+          type: integer
+          format: int32
+          description: Total number of items in the response, regardless of pagination.
+      description: The response message for ListAddresses.
+    v2WalletBTCDetailsBTCNetworkDetails:
+      type: object
+      properties:
+        network:
+          type: string
+          example: networks/bitcoin-mainnet
+          description: A specific btc network of the wallet.
+          readOnly: true
+        mainAddress:
+          type: string
+          description: The main deposit address of the wallet in the network.
+          readOnly: true
+        xpub:
+          type: string
+          description: The xpub of the wallet in the network. Included only when `FULL` view is requested.
+          readOnly: true
+    WalletSolanaDetails:
+      type: object
+      properties:
+        address:
+          type: string
+          description: The address of the wallet.
+          readOnly: true
+    WalletsUnarchiveWalletBody:
+      type: object
+      properties:
+        allowMissing:
+          type: boolean
+          description: If set to true, the operation will not fail if the wallet is missing.
     v2ListWalletsResponse:
       type: object
       properties:
@@ -879,20 +877,6 @@ components:
           type: integer
           format: int32
           description: Total number of items in the response, regardless of pagination.
-    WalletTronDetails:
-      type: object
-      properties:
-        address:
-          type: string
-          description: The address of the wallet.
-          readOnly: true
-    v2WalletEVMDetails:
-      type: object
-      properties:
-        address:
-          type: string
-          description: The address of the wallet.
-          readOnly: true
     v2ConvertedValue:
       type: object
       properties:
@@ -905,6 +889,22 @@ components:
           description: The currency code of the amount. Always USD.
           readOnly: true
       description: A message representing a converted value.
+    WalletCreateParams:
+      type: object
+      properties:
+        walletGroups:
+          type: array
+          example:
+          - vaults/1b25635a5b3f/walletGroups/95257c5a522f
+          items:
+            type: string
+          description: 'Wallet will be assigned to these wallet groups upon creation.
+
+            Each group must support assignment of empty wallets on creation in the dedicated group setting.
+
+
+            Format: `vaults/{vault_id}/walletGroups/{wallet_group_id}`.'
+      description: Parameters only used during wallet creation.
   securitySchemes:
     bearerAuth:
       type: http

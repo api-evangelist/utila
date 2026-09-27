@@ -124,6 +124,61 @@ paths:
       - Blockchains
 components:
   schemas:
+    v2ListVaultNetworksResponse:
+      type: object
+      properties:
+        networks:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2Network'
+          description: The list of vault networks.
+        nextPageToken:
+          type: string
+          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+    v2NetworkStatusEnum:
+      type: string
+      enum:
+      - ACTIVE
+      - DISABLED
+      - DEPRECATED
+    v2ListNetworksResponse:
+      type: object
+      properties:
+        networks:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2Network'
+          description: The list of networks.
+        nextPageToken:
+          type: string
+          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+      description: The response message for ListNetworks.
+    v2GetNetworkResponse:
+      type: object
+      properties:
+        network:
+          description: The network.
+          allOf:
+          - $ref: '#/components/schemas/v2Network'
+    v2BatchContract:
+      type: object
+      properties:
+        name:
+          type: string
+          example: networks/ethereum-mainnet/0x1234...
+          description: The resource name of the batch contract.
+        network:
+          type: string
+          example: networks/ethereum-mainnet
+          description: The network of the batch contract.
+        address:
+          type: string
+          example: 0x1234...
+          description: The address of the batch contract.
     NetworkCAIPDetails:
       type: object
       properties:
@@ -152,21 +207,6 @@ components:
 
             Format: `[-_a-zA-Z0-9]{1,32}`'
       description: Chain-Agnostic Identifiers (CAIP) details for this network.
-    v2BatchContract:
-      type: object
-      properties:
-        name:
-          type: string
-          example: networks/ethereum-mainnet/0x1234...
-          description: The resource name of the batch contract.
-        network:
-          type: string
-          example: networks/ethereum-mainnet
-          description: The network of the batch contract.
-        address:
-          type: string
-          example: 0x1234...
-          description: The address of the batch contract.
     v2Network:
       type: object
       properties:
@@ -205,46 +245,6 @@ components:
           description: Whether this network is custom.
         status:
           $ref: '#/components/schemas/v2NetworkStatusEnum'
-    v2ListNetworksResponse:
-      type: object
-      properties:
-        networks:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2Network'
-          description: The list of networks.
-        nextPageToken:
-          type: string
-          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
-
-            If this field is omitted, there are no subsequent pages.'
-      description: The response message for ListNetworks.
-    v2NetworkStatusEnum:
-      type: string
-      enum:
-      - ACTIVE
-      - DISABLED
-      - DEPRECATED
-    v2GetNetworkResponse:
-      type: object
-      properties:
-        network:
-          description: The network.
-          allOf:
-          - $ref: '#/components/schemas/v2Network'
-    v2ListVaultNetworksResponse:
-      type: object
-      properties:
-        networks:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2Network'
-          description: The list of vault networks.
-        nextPageToken:
-          type: string
-          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
-
-            If this field is omitted, there are no subsequent pages.'
   securitySchemes:
     bearerAuth:
       type: http

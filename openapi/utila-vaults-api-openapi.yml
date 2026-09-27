@@ -86,6 +86,30 @@ paths:
       - Vaults
 components:
   schemas:
+    v2ListVaultsResponse:
+      type: object
+      properties:
+        vaults:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2Vault'
+          description: The vaults returned.
+        nextPageToken:
+          type: string
+          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+        totalSize:
+          type: integer
+          format: int32
+          description: Total number of items in the response, regardless of pagination.
+    v2GetVaultResponse:
+      type: object
+      properties:
+        vault:
+          description: The vault.
+          allOf:
+          - $ref: '#/components/schemas/v2Vault'
     v2Vault:
       type: object
       properties:
@@ -118,30 +142,6 @@ components:
           readOnly: true
       required:
       - displayName
-    v2GetVaultResponse:
-      type: object
-      properties:
-        vault:
-          description: The vault.
-          allOf:
-          - $ref: '#/components/schemas/v2Vault'
-    v2ListVaultsResponse:
-      type: object
-      properties:
-        vaults:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2Vault'
-          description: The vaults returned.
-        nextPageToken:
-          type: string
-          description: 'A token, which can be sent as `pageToken` to retrieve the next page.
-
-            If this field is omitted, there are no subsequent pages.'
-        totalSize:
-          type: integer
-          format: int32
-          description: Total number of items in the response, regardless of pagination.
   securitySchemes:
     bearerAuth:
       type: http
