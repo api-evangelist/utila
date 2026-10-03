@@ -196,6 +196,132 @@ paths:
       - Address Book
 components:
   schemas:
+    v2ListAddressBookEntriesResponse:
+      type: object
+      properties:
+        addressBookEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2AddressBookEntry'
+          description: The list of address book entries.
+          readOnly: true
+        nextPageToken:
+          type: string
+          example: next_page_token
+          description: 'A token, which can be sent as `page_token` to retrieve the next page.
+
+            If this field is omitted, there are no subsequent pages.'
+          readOnly: true
+        totalSize:
+          type: integer
+          format: int32
+          example: 150
+          description: The total number of address book entries that match the request criteria.
+          readOnly: true
+    v2CreateAddressBookEntryRequest:
+      type: object
+      properties:
+        address:
+          type: string
+          example: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6'
+          description: The blockchain address.
+        displayName:
+          type: string
+          example: John's deposit address
+          description: A human-readable name for the address.
+        network:
+          type: string
+          example: networks/ethereum-mainnet
+          description: 'The resource name of the network this address belongs to.
+
+
+            Format: `networks/{network_id}`'
+        note:
+          type: string
+          example: 'This is John''s deposit address '
+          description: Optional note attached to the address.
+      description: Request message for creating a single address book entry.
+      required:
+      - address
+      - displayName
+      - network
+    v2VaultAction:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 'The resource name of the vault action.
+
+
+            Format: `vaults/{vault_id}/actions/{action_id}`'
+          readOnly: true
+        status:
+          description: The current status of the vault action.
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/v2VaultActionStatusEnum'
+        createTime:
+          type: string
+          format: date-time
+          description: Creation timestamp.
+          readOnly: true
+        expireTime:
+          type: string
+          format: date-time
+          description: Expiration timestamp.
+          readOnly: true
+    AddressBookBatchAddAddressBookEntriesToGroupBody:
+      type: object
+      properties:
+        addressBookEntryGroup:
+          type: string
+          example: vaults/1b25635a5b3f/addressBookEntryGroups/abc123
+          description: 'The resource name of the address book entry group that the entries should be
+
+            added to.
+
+
+            Format: `vaults/{vault_id}/addressBookEntryGroups/{group_id}`'
+        names:
+          type: array
+          example:
+          - vaults/1b25635a5b3f/addressBookEntries/95257c5a522f
+          items:
+            type: string
+          description: 'The resource names of the address book entries to add to the group.
+
+
+            Format: `vaults/{vault_id}/addressBookEntries/{entry_id}`'
+      required:
+      - addressBookEntryGroup
+      - names
+    v2BatchCreateAddressBookEntriesResponse:
+      type: object
+      properties:
+        vaultAction:
+          description: The vault action representing the quorum action.
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/v2VaultAction'
+    v2VaultActionStatusEnum:
+      type: string
+      enum:
+      - PENDING
+      - REJECTED
+      - AWAITING_SIGNATURE
+      - RUNNING
+      - FINISHED
+      - FAILED
+      - CANCELED
+      - EXPIRED
+    v2BatchCreateUnsignedAddressBookEntriesResponse:
+      type: object
+      properties:
+        vaultAction:
+          description: The vault action representing the quorum action.
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/v2VaultAction'
     AddressBookBatchCreateUnsignedAddressBookEntriesBody:
       type: object
       properties:
@@ -206,6 +332,25 @@ components:
           description: The individual create requests for each address book entry.
       required:
       - requests
+    AddressBookBatchCreateAddressBookEntriesBody:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2CreateAddressBookEntryRequest'
+          description: The individual create requests for each address book entry.
+      required:
+      - requests
+    v2BatchGetAddressBookEntriesResponse:
+      type: object
+      properties:
+        addressBookEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/v2AddressBookEntry'
+          description: The requested address book entries.
+          readOnly: true
     v2AddressBookEntry:
       type: object
       properties:
@@ -274,132 +419,6 @@ components:
       - address
       - displayName
       - network
-    v2ListAddressBookEntriesResponse:
-      type: object
-      properties:
-        addressBookEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2AddressBookEntry'
-          description: The list of address book entries.
-          readOnly: true
-        nextPageToken:
-          type: string
-          example: next_page_token
-          description: 'A token, which can be sent as `page_token` to retrieve the next page.
-
-            If this field is omitted, there are no subsequent pages.'
-          readOnly: true
-        totalSize:
-          type: integer
-          format: int32
-          example: 150
-          description: The total number of address book entries that match the request criteria.
-          readOnly: true
-    v2VaultAction:
-      type: object
-      properties:
-        name:
-          type: string
-          description: 'The resource name of the vault action.
-
-
-            Format: `vaults/{vault_id}/actions/{action_id}`'
-          readOnly: true
-        status:
-          description: The current status of the vault action.
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/v2VaultActionStatusEnum'
-        createTime:
-          type: string
-          format: date-time
-          description: Creation timestamp.
-          readOnly: true
-        expireTime:
-          type: string
-          format: date-time
-          description: Expiration timestamp.
-          readOnly: true
-    v2BatchCreateUnsignedAddressBookEntriesResponse:
-      type: object
-      properties:
-        vaultAction:
-          description: The vault action representing the quorum action.
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/v2VaultAction'
-    v2CreateAddressBookEntryRequest:
-      type: object
-      properties:
-        address:
-          type: string
-          example: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6'
-          description: The blockchain address.
-        displayName:
-          type: string
-          example: John's deposit address
-          description: A human-readable name for the address.
-        network:
-          type: string
-          example: networks/ethereum-mainnet
-          description: 'The resource name of the network this address belongs to.
-
-
-            Format: `networks/{network_id}`'
-        note:
-          type: string
-          example: 'This is John''s deposit address '
-          description: Optional note attached to the address.
-      description: Request message for creating a single address book entry.
-      required:
-      - address
-      - displayName
-      - network
-    v2BatchCreateAddressBookEntriesResponse:
-      type: object
-      properties:
-        vaultAction:
-          description: The vault action representing the quorum action.
-          readOnly: true
-          allOf:
-          - $ref: '#/components/schemas/v2VaultAction'
-    v2VaultActionStatusEnum:
-      type: string
-      enum:
-      - PENDING
-      - REJECTED
-      - AWAITING_SIGNATURE
-      - RUNNING
-      - FINISHED
-      - FAILED
-      - CANCELED
-      - EXPIRED
-    AddressBookBatchAddAddressBookEntriesToGroupBody:
-      type: object
-      properties:
-        addressBookEntryGroup:
-          type: string
-          example: vaults/1b25635a5b3f/addressBookEntryGroups/abc123
-          description: 'The resource name of the address book entry group that the entries should be
-
-            added to.
-
-
-            Format: `vaults/{vault_id}/addressBookEntryGroups/{group_id}`'
-        names:
-          type: array
-          example:
-          - vaults/1b25635a5b3f/addressBookEntries/95257c5a522f
-          items:
-            type: string
-          description: 'The resource names of the address book entries to add to the group.
-
-
-            Format: `vaults/{vault_id}/addressBookEntries/{entry_id}`'
-      required:
-      - addressBookEntryGroup
-      - names
     v2BatchAddAddressBookEntriesToGroupResponse:
       type: object
       properties:
@@ -408,25 +427,6 @@ components:
           readOnly: true
           allOf:
           - $ref: '#/components/schemas/v2VaultAction'
-    AddressBookBatchCreateAddressBookEntriesBody:
-      type: object
-      properties:
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2CreateAddressBookEntryRequest'
-          description: The individual create requests for each address book entry.
-      required:
-      - requests
-    v2BatchGetAddressBookEntriesResponse:
-      type: object
-      properties:
-        addressBookEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/v2AddressBookEntry'
-          description: The requested address book entries.
-          readOnly: true
   securitySchemes:
     bearerAuth:
       type: http

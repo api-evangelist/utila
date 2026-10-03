@@ -86,6 +86,13 @@ paths:
       - Vaults
 components:
   schemas:
+    v2GetVaultResponse:
+      type: object
+      properties:
+        vault:
+          description: The vault.
+          allOf:
+          - $ref: '#/components/schemas/v2Vault'
     v2ListVaultsResponse:
       type: object
       properties:
@@ -103,13 +110,6 @@ components:
           type: integer
           format: int32
           description: Total number of items in the response, regardless of pagination.
-    v2GetVaultResponse:
-      type: object
-      properties:
-        vault:
-          description: The vault.
-          allOf:
-          - $ref: '#/components/schemas/v2Vault'
     v2Vault:
       type: object
       properties:
