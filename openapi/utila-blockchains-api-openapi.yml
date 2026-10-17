@@ -124,12 +124,6 @@ paths:
       - Blockchains
 components:
   schemas:
-    v2NetworkStatusEnum:
-      type: string
-      enum:
-      - ACTIVE
-      - DISABLED
-      - DEPRECATED
     v2ListNetworksResponse:
       type: object
       properties:
@@ -144,6 +138,12 @@ components:
 
             If this field is omitted, there are no subsequent pages.'
       description: The response message for ListNetworks.
+    v2NetworkStatusEnum:
+      type: string
+      enum:
+      - ACTIVE
+      - DISABLED
+      - DEPRECATED
     v2GetNetworkResponse:
       type: object
       properties:
@@ -151,6 +151,34 @@ components:
           description: The network.
           allOf:
           - $ref: '#/components/schemas/v2Network'
+    NetworkCAIPDetails:
+      type: object
+      properties:
+        chainId:
+          type: string
+          example: eip155:1
+          description: 'The CAIP-2 compliant chain id.
+
+
+            Format: `{namespace}:{reference}`'
+        namespace:
+          type: string
+          example: eip155
+          description: 'The CAIP-2 compliant namespace.
+
+
+            See: https://github.com/ChainAgnostic/namespaces
+
+
+            Format: `[-a-z0-9]{3,8}`'
+        reference:
+          type: string
+          example: '1'
+          description: 'The CAIP-2 compliant reference.
+
+
+            Format: `[-_a-zA-Z0-9]{1,32}`'
+      description: Chain-Agnostic Identifiers (CAIP) details for this network.
     v2Network:
       type: object
       properties:
@@ -204,34 +232,6 @@ components:
           type: string
           example: 0x1234...
           description: The address of the batch contract.
-    NetworkCAIPDetails:
-      type: object
-      properties:
-        chainId:
-          type: string
-          example: eip155:1
-          description: 'The CAIP-2 compliant chain id.
-
-
-            Format: `{namespace}:{reference}`'
-        namespace:
-          type: string
-          example: eip155
-          description: 'The CAIP-2 compliant namespace.
-
-
-            See: https://github.com/ChainAgnostic/namespaces
-
-
-            Format: `[-a-z0-9]{3,8}`'
-        reference:
-          type: string
-          example: '1'
-          description: 'The CAIP-2 compliant reference.
-
-
-            Format: `[-_a-zA-Z0-9]{1,32}`'
-      description: Chain-Agnostic Identifiers (CAIP) details for this network.
     v2ListVaultNetworksResponse:
       type: object
       properties:
